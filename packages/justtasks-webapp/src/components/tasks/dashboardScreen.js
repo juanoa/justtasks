@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
-import moment from 'moment'
 
 import {DayColumn} from "./dayColumn";
-import {getNextDays} from "../../helpers/moment";
+import {getNextDays, isDateToday} from "../../helpers/moment";
 
 export const DashboardScreen = () => {
 
@@ -16,7 +15,7 @@ export const DashboardScreen = () => {
         days.map((day, i) => (
           <DayColumn
             day={day}
-            isToday={moment(day).format('DDMMYYYY') === moment().format('DDMMYYYY')}
+            isToday={isDateToday(day)}
             key={i}
           />
         ))

@@ -9,3 +9,11 @@ export const getNextDays = (days) => {
 
   return nextDays
 }
+
+export const getDayFromDate = (date) => {
+  return moment(date).format("DDMMYYYY")
+}
+
+export const isDateToday = (date) => {
+  return moment(date).format('DDMMYYYY') === moment().format('DDMMYYYY')
+}

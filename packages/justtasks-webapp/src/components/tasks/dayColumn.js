@@ -1,11 +1,15 @@
 import React from 'react'
 import moment from 'moment'
+import {useSelector} from "react-redux";
 
 import {TaskCard} from "./taskCard";
+import {AddTask} from "./addTask";
+import {getDayFromDate} from "../../helpers/moment";
 
 export const DayColumn = ({day, isToday = false}) => {
 
-  const random = [1, 2, 3, 4, 5, 6]
+  const {tasks: totalTasks} = useSelector(state => state.tasks)
+  const tasks = totalTasks.filter(t => getDayFromDate(day) === t.day) || {tasks: []}
 
   return (
     <div className="col-md-3">
@@ -16,12 +20,10 @@ export const DayColumn = ({day, isToday = false}) => {
       <hr/>
       <div>
         {
-          random.map(r => <TaskCard key={r}/>)
+          tasks.map((task, i) => <TaskCard task={task} key={i}/>)
         }
       </div>
-      <div className="text-center font-monospace mt-3">
-        <small>+ Add task</small>
-      </div>
+      <AddTask day={day}/>
     </div>
   )
 }

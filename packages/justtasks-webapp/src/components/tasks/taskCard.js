@@ -4,7 +4,7 @@ export const TaskCard = ({task}) => {
   return (
     <div className="card mt-3">
       <div className="card-body">
-        A simple task
+        {task.title}
       </div>
     </div>
   )
