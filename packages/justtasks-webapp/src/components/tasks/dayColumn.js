@@ -1,20 +1,22 @@
 import React from 'react'
+import moment from 'moment'
+
 import {TaskCard} from "./taskCard";
 
-export const DayColumn = ({weekDay}) => {
+export const DayColumn = ({day, isToday = false}) => {
 
-  const random = [1,1,1,1,1,1]
+  const random = [1, 2, 3, 4, 5, 6]
 
   return (
     <div className="col-md-3">
-      <div className="text-center">
-        <h3>{weekDay}</h3>
-        <small>10th may</small>
-        <hr/>
+      <div className={`text-center ${(isToday) ? 'text-danger' : ''}`}>
+        <h3>{moment(day).format('dddd')}</h3>
+        <small>{moment(day).format('Do MMM')}</small>
       </div>
+      <hr/>
       <div>
         {
-          random.map(r => <TaskCard />)
+          random.map(r => <TaskCard key={r}/>)
         }
       </div>
       <div className="text-center font-monospace mt-3">
