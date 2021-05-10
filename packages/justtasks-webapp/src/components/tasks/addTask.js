@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import {useDispatch} from "react-redux";
+
 import {useForm} from "../../hooks/useForm";
 import {taskStartAddNew} from "../../actions/tasks";
-import moment from "moment";
 import {getDayFromDate} from "../../helpers/moment";
 
 export const AddTask = ({day}) => {
@@ -53,7 +53,7 @@ export const AddTask = ({day}) => {
               </div>
             </form>
           )
-          : <small className="font-monospace" onClick={handleShowInput}>+ Add task</small>
+          : <span className="font-monospace btn" onClick={handleShowInput}>+ Add task</span>
       }
     </div>
   )

@@ -1,12 +1,15 @@
 import {types} from "../types/types";
+import moment from "moment";
 
 const initialState = {
   tasks: [
-    {title: 'Nota 1', day: '10052021'},
-    {title: 'Nota 2', day: '11052021'},
-    {title: 'Nota 3', day: '12052021'},
-    {title: 'Nota 4', day: '13052021'},
-    {title: 'Nota 5', day: '14052021'},
+    {title: 'Nota 1', day: moment().format("DDMMYYYY"), completed: false},
+    {title: 'Nota 2.1', day: moment().add(1, "days").format("DDMMYYYY"), completed: true},
+    {title: 'Nota 2.2', day: moment().add(1, "days").format("DDMMYYYY"), completed: false},
+    {title: 'Nota 2.3', day: moment().add(1, "days").format("DDMMYYYY"), completed: false},
+    {title: 'Nota 3', day: moment().add(2, "days").format("DDMMYYYY"), completed: false},
+    {title: 'Nota 4', day: moment().add(3, "days").format("DDMMYYYY"), completed: false},
+    {title: 'Nota 5', day: moment().add(4, "days").format("DDMMYYYY"), completed: false},
   ],
   activeTask: null
 }

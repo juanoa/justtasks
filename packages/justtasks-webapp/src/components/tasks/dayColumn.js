@@ -9,7 +9,8 @@ import {getDayFromDate} from "../../helpers/moment";
 export const DayColumn = ({day, isToday = false}) => {
 
   const {tasks: totalTasks} = useSelector(state => state.tasks)
-  const tasks = totalTasks.filter(t => getDayFromDate(day) === t.day) || {tasks: []}
+  const noCompletedTasks = totalTasks.filter(t => (getDayFromDate(day) === t.day && !t.completed)) || {tasks: []}
+  const completedTasks = totalTasks.filter(t => (getDayFromDate(day) === t.day && t.completed)) || {tasks: []}
 
   return (
     <div className="col-md-3">
@@ -20,9 +21,17 @@ export const DayColumn = ({day, isToday = false}) => {
       <hr/>
       <div>
         {
-          tasks.map((task, i) => <TaskCard task={task} key={i}/>)
+          noCompletedTasks.map((task, i) => <TaskCard task={task} key={i}/>)
         }
       </div>
+      {
+        completedTasks.length > 0 &&
+        <div className="mt-4">
+          {
+            completedTasks.map((task, i) => <TaskCard task={task} key={i}/>)
+          }
+        </div>
+      }
       <AddTask day={day}/>
     </div>
   )

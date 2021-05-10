@@ -1,5 +1,7 @@
 import moment from "moment";
 
+const format = "DDMMYYYY"
+
 export const getNextDays = (days) => {
   const nextDays = []
 
@@ -11,9 +13,9 @@ export const getNextDays = (days) => {
 }
 
 export const getDayFromDate = (date) => {
-  return moment(date).format("DDMMYYYY")
+  return moment(date).format(format)
 }
 
 export const isDateToday = (date) => {
-  return moment(date).format('DDMMYYYY') === moment().format('DDMMYYYY')
+  return moment(date).format(format) === moment().format(format)
 }
