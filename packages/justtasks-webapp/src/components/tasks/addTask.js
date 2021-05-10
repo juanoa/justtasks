@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 
 import {useForm} from "../../hooks/useForm";
 import {taskStartAddNew} from "../../actions/tasks";
-import {getDayFromDate} from "../../helpers/moment";
+import {getFormattedDayFromDate} from "../../helpers/moment";
 
 export const AddTask = ({day}) => {
 
@@ -28,7 +28,7 @@ export const AddTask = ({day}) => {
 
   const handleForm = (e) => {
     e.preventDefault()
-    dispatch(taskStartAddNew(titleNewTask, getDayFromDate(day)))
+    dispatch(taskStartAddNew(titleNewTask, getFormattedDayFromDate(day)))
     clear()
     setShowInput(false)
   }

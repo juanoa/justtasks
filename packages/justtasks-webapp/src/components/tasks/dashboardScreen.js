@@ -15,8 +15,10 @@ export const DashboardScreen = () => {
 
   const onDragEnd = (e) => {
     const taskId = e.draggableId
-    const dayDest = e.destination.droppableId
-    dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
+    const dayDest = e.destination?.droppableId
+    if (dayDest) {
+      dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
+    }
   };
 
   return (

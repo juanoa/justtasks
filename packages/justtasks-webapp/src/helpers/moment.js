@@ -12,7 +12,7 @@ export const getNextDays = (days) => {
   return nextDays
 }
 
-export const getDayFromDate = (date) => {
+export const getFormattedDayFromDate = (date) => {
   return moment(date).format(format)
 }
 

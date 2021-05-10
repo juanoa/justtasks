@@ -27,6 +27,12 @@ export const taskStartUpdateDayFromDrag = (id, day) => {
   }
 }
 
+export const startTaskUpdate = (task) => {
+  return (dispatch) => {
+    dispatch(taskUpdate(task))
+  }
+}
+
 const taskUpdate = (task) => ({
   type: types.taskUpdate,
   payload: task
