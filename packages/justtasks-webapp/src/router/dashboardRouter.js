@@ -7,6 +7,7 @@ import {
 
 import {DashboardScreen} from "../components/tasks/dashboardScreen";
 import {Navbar} from "../components/ui/navbar";
+import {Example} from "../components/example";
 
 export const DashboardRouter = () => {
   return (
@@ -17,6 +18,11 @@ export const DashboardRouter = () => {
           exact
           path="/"
           component={DashboardScreen}
+        />
+        <Route
+          exact
+          path="/example"
+          component={Example}
         />
         <Redirect to='/'/>
       </Switch>
