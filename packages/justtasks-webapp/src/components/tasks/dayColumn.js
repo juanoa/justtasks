@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import {TaskCard} from "./taskCard";
 import {AddTask} from "./addTask";
 import {getDayFromDate} from "../../helpers/moment";
+import {Droppable} from "react-beautiful-dnd";
 
 export const DayColumn = ({day, isToday = false}) => {
 
@@ -19,11 +20,18 @@ export const DayColumn = ({day, isToday = false}) => {
         <small>{moment(day).format('Do MMM')}</small>
       </div>
       <hr/>
-      <div>
-        {
-          noCompletedTasks.map((task, i) => <TaskCard task={task} key={i}/>)
-        }
-      </div>
+      <Droppable droppableId={getDayFromDate(day)}>
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {
+              noCompletedTasks.map((task, i) => <TaskCard task={task} index={i} key={i}/>)
+            }
+          </div>
+        )}
+      </Droppable>
       {
         completedTasks.length > 0 &&
         <div className="mt-4">

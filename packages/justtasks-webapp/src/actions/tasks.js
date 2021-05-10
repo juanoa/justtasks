@@ -1,10 +1,13 @@
 import {types} from "../types/types";
+import moment from "moment";
 
 export const taskStartAddNew = (title, day) => {
   return (dispatch) => {
     const task = {
+      id: moment().toString(),
       title,
-      day
+      day,
+      completed: false
     }
     dispatch(taskAddNew(task))
   }
@@ -12,5 +15,19 @@ export const taskStartAddNew = (title, day) => {
 
 const taskAddNew = (task) => ({
   type: types.taskAddNew,
+  payload: task
+})
+
+export const taskStartUpdateDayFromDrag = (id, day) => {
+  return (dispatch, getState) => {
+    const {tasks} = getState().tasks
+    const task = tasks.find(t => t.id === id)
+    task.day = day
+    dispatch(taskUpdate(task))
+  }
+}
+
+const taskUpdate = (task) => ({
+  type: types.taskUpdate,
   payload: task
 })
