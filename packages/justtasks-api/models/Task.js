@@ -1,19 +1,16 @@
 const {Schema, model} = require('mongoose')
 
-const UserSchema = Schema(
+const TaskSchema = Schema(
   {
-    email: {
+    title: {
       type: String,
       required: true,
       unique: true
     },
-    name: {
-      type: String,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
       required: true,
-    },
-    password: {
-      type: String,
-      required: true
     },
   },
   {
@@ -21,4 +18,4 @@ const UserSchema = Schema(
   }
 )
 
-module.exports = model('User', UserSchema)
+module.exports = model('Task', UserSchema)
