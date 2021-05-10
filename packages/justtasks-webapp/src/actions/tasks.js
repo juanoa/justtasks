@@ -37,3 +37,16 @@ const taskUpdate = (task) => ({
   type: types.taskUpdate,
   payload: task
 })
+
+export const taskStartDeleteFromDrag = (id) => {
+  return (dispatch, getState) => {
+    const {tasks} = getState().tasks
+    const task = tasks.find(t => t.id === id)
+    dispatch(taskDelete(task))
+  }
+}
+
+const taskDelete = (task) => ({
+  type: types.taskDelete,
+  payload: task
+})

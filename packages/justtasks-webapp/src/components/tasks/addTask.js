@@ -46,6 +46,7 @@ export const AddTask = ({day}) => {
                   placeholder="What do you have in mind?"
                   name="titleNewTask"
                   autoFocus={true}
+                  autoComplete="off"
                   onKeyDown={handleHideInput}
                   value={titleNewTask}
                   onChange={handleInputChange}

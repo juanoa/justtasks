@@ -25,6 +25,7 @@ export const DayColumn = ({day, isToday = false}) => {
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
+            style={{backgroundColor: snapshot.isDraggingOver ? '#f8f9fa' : ''}}
           >
             {
               noCompletedTasks.map((task, i) => <TaskCard task={task} index={i} key={i}/>)
