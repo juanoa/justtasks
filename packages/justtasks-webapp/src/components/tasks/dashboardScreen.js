@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import {DayColumn} from "./dayColumn";
 import moment from 'moment'
+
+import {DayColumn} from "./dayColumn";
+import {getNextDays} from "../../helpers/moment";
 
 export const DashboardScreen = () => {
 
-  const initDaysState = []
-  for (let i = 0; i < 4; i++) {
-    initDaysState.push(moment().add(i, 'days'))
-  }
+  const initDaysState = getNextDays(4)
 
   const [days, setDays] = useState(initDaysState);
 
