@@ -1,12 +1,8 @@
-import {DashboardScreen} from "./components/tasks/dashboardScreen";
-import {Navbar} from "./components/ui/navbar";
+import {AppRouter} from "./router/appRouter";
 
 const App = () => {
   return (
-    <>
-      <Navbar />
-      <DashboardScreen />
-    </>
+    <AppRouter />
   );
 }
 
