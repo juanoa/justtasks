@@ -21,6 +21,7 @@ app.use(express.json())
 
 // Routes
 app.use('/v1/auth', require('./routes/auth'))
+app.use('/v1/tasks', require('./routes/tasks'))
 
 // Listen requests
 app.listen(process.env.PORT, () => {
