@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 import {DayColumn} from "./dayColumn";
-import {getNextDays, isDateToday} from "../../helpers/moment";
+import {getBackwardDays, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
 import {taskStartDeleteFromDrag, taskStartLoading, taskStartUpdateDayFromDrag} from "../../actions/tasks";
 
 export const DashboardScreen = () => {
@@ -11,7 +11,6 @@ export const DashboardScreen = () => {
   const dispatch = useDispatch()
 
   const initDaysState = getNextDays(4)
-  // eslint-disable-next-line no-unused-vars
   const [days, setDays] = useState(initDaysState);
 
   useEffect(() => {
@@ -28,11 +27,31 @@ export const DashboardScreen = () => {
     }
   }
 
+  const handleBackward = () => {
+    const newDays = getBackwardDays(days)
+    setDays(newDays)
+  }
+
+  const handleForward = () => {
+    const newDays = getForwardDays(days)
+    setDays(newDays)
+  }
+
+  const handleToday = () => {
+    const newDays = getNextDays(4)
+    setDays(newDays)
+  }
+
   return (
     <DragDropContext
       onDragEnd={onDragEnd}
     >
       <div className="row m-4">
+        <div className="d-flex justify-content-between font-monospace mb-3">
+          <span className="btn btn-light" onClick={handleBackward}><i className="bi bi-arrow-left"/> Backward</span>
+          <span className="btn btn-light" onClick={handleToday}><i className="bi bi-calendar-event" /> Today</span>
+          <span className="btn btn-light" onClick={handleForward}>Forward <i className="bi bi-arrow-right"/></span>
+        </div>
         {
           days.map((day, i) => (
             <DayColumn
