@@ -32,7 +32,7 @@ export const TaskCard = ({task, index}) => {
   } else {
     return (
       <Draggable
-        draggableId={task.id}
+        draggableId={task._id}
         index={index}
       >
         {(provided, snapshot) => (

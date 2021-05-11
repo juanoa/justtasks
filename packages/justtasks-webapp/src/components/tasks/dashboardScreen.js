@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch} from "react-redux";
 import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 import {DayColumn} from "./dayColumn";
 import {getNextDays, isDateToday} from "../../helpers/moment";
-import {taskStartDeleteFromDrag, taskStartUpdateDayFromDrag} from "../../actions/tasks";
+import {taskStartDeleteFromDrag, taskStartLoading, taskStartUpdateDayFromDrag} from "../../actions/tasks";
 
 export const DashboardScreen = () => {
 
@@ -13,6 +13,9 @@ export const DashboardScreen = () => {
   const initDaysState = getNextDays(4)
   const [days, setDays] = useState(initDaysState);
 
+  useEffect(() => {
+    dispatch(taskStartLoading())
+  }, [dispatch]);
 
   const onDragEnd = (e) => {
     const taskId = e.draggableId

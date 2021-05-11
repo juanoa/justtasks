@@ -1,15 +1,48 @@
+import Swal from "sweetalert2";
+
 import {types} from "../types/types";
-import moment from "moment";
+import {fetchWithToken} from "../helpers/fetch";
+
+export const taskStartLoading = () => {
+  return async (dispatch) => {
+
+    try {
+      const resp = await fetchWithToken('tasks');
+      const body = await resp.json()
+
+      const tasks = body.tasks
+
+      dispatch(eventLoaded(tasks))
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
+const eventLoaded = (task) => ({
+  type: types.taskLoaded,
+  payload: task
+})
 
 export const taskStartAddNew = (title, day) => {
-  return (dispatch) => {
-    const task = {
-      id: moment().toString(),
-      title,
-      day,
-      completed: false
+  return async (dispatch) => {
+    try {
+      const task = {
+        title,
+        day,
+        completed: false
+      }
+      const respuesta = await fetchWithToken('tasks', task, 'POST')
+      const body = await respuesta.json()
+
+      if (body.ok) {
+        task._id = body.task._id
+        dispatch(taskAddNew(task))
+      }
+    } catch (e) {
+      console.log(e)
     }
-    dispatch(taskAddNew(task))
+
   }
 }
 
@@ -19,17 +52,41 @@ const taskAddNew = (task) => ({
 })
 
 export const taskStartUpdateDayFromDrag = (id, day) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const {tasks} = getState().tasks
-    const task = tasks.find(t => t.id === id)
+    const task = tasks.find(t => t._id === id)
+    const oldDay = task.day
     task.day = day
     dispatch(taskUpdate(task))
+
+    try {
+      const resp = await fetchWithToken(`tasks/${id}`, task, 'PUT')
+      const body = await resp.json()
+
+      if (!body.ok) {
+        task.day = oldDay
+        dispatch(taskUpdate(task))
+        Swal.fire('Error', body.msg, 'error')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
 export const startTaskUpdate = (task) => {
-  return (dispatch) => {
-    dispatch(taskUpdate(task))
+  return async (dispatch) => {
+    try {
+      const resp = await fetchWithToken(`tasks/${task._id}`, task, 'PUT')
+      const body = await resp.json()
+      dispatch(taskUpdate(task))
+
+      if (!body.ok) {
+        Swal.fire('Error', body.msg, 'error')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
@@ -39,10 +96,22 @@ const taskUpdate = (task) => ({
 })
 
 export const taskStartDeleteFromDrag = (id) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const {tasks} = getState().tasks
-    const task = tasks.find(t => t.id === id)
+    const task = tasks.find(t => t._id === id)
     dispatch(taskDelete(task))
+
+    try {
+      const resp = await fetchWithToken(`tasks/${id}`, {}, 'DELETE')
+      const body = await resp.json()
+
+      if (!body.ok) {
+        dispatch(taskAddNew(task))
+        Swal.fire('Error', body.msg, 'error')
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
