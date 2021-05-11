@@ -3,7 +3,7 @@ import {Draggable} from "react-beautiful-dnd";
 import {useDispatch} from "react-redux";
 import {startTaskUpdate} from "../../actions/tasks";
 
-export const TaskCard = ({task, index}) => {
+export const TaskCard = ({task, index, isToday}) => {
 
   const dispatch = useDispatch()
 
@@ -23,7 +23,7 @@ export const TaskCard = ({task, index}) => {
         <div className="card-body d-flex justify-content-between">
           <del>{task.title}</del>
           <i
-            className="bi bi-arrow-90deg-up"
+            className={`bi bi-arrow-90deg-up ${(isToday) ? 'text-danger' : ''}`}
             onClick={incompleteTask}
           />
         </div>
@@ -45,7 +45,7 @@ export const TaskCard = ({task, index}) => {
             <div className="card-body d-flex justify-content-between">
               <span>{task.title}</span>
               <i
-                className="bi bi-check-lg"
+                className={`bi bi-check-lg ${(isToday) ? 'text-danger' : ''}`}
                 onClick={completeTask}
               />
             </div>

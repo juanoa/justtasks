@@ -28,7 +28,7 @@ export const DayColumn = ({day, isToday = false}) => {
             style={{backgroundColor: snapshot.isDraggingOver ? '#f8f9fa' : ''}}
           >
             {
-              noCompletedTasks.map((task, i) => <TaskCard task={task} index={i} key={i}/>)
+              noCompletedTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
             }
           </div>
         )}
@@ -37,7 +37,7 @@ export const DayColumn = ({day, isToday = false}) => {
         completedTasks.length > 0 &&
         <div className={(noCompletedTasks.length > 0) ? 'mt-4' : ''}>
           {
-            completedTasks.map((task, i) => <TaskCard task={task} key={i}/>)
+            completedTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
           }
         </div>
       }
