@@ -32,6 +32,7 @@ export const taskStartAddNew = (title, day) => {
         day,
         completed: false
       }
+
       const respuesta = await fetchWithToken('tasks', task, 'POST')
       const body = await respuesta.json()
 
@@ -75,13 +76,18 @@ export const taskStartUpdateDayFromDrag = (id, day) => {
 }
 
 export const startTaskUpdate = (task) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const {tasks} = getState().tasks
+    const oldTask = tasks.find(t => t._id === task._id)
+
+    dispatch(taskUpdate(task))
     try {
       const resp = await fetchWithToken(`tasks/${task._id}`, task, 'PUT')
       const body = await resp.json()
-      dispatch(taskUpdate(task))
+
 
       if (!body.ok) {
+        dispatch(taskUpdate(oldTask))
         Swal.fire('Error', body.msg, 'error')
       }
     } catch (e) {
