@@ -11,6 +11,7 @@ export const DashboardScreen = () => {
   const dispatch = useDispatch()
 
   const initDaysState = getNextDays(4)
+  // eslint-disable-next-line no-unused-vars
   const [days, setDays] = useState(initDaysState);
 
   useEffect(() => {
