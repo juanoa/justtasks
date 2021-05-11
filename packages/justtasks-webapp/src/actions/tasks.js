@@ -50,3 +50,7 @@ const taskDelete = (task) => ({
   type: types.taskDelete,
   payload: task
 })
+
+export const taskLogout = () => ({
+  type: types.taskLogout
+})

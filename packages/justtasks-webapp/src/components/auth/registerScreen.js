@@ -1,21 +1,26 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import './style.css'
 import {useForm} from "../../hooks/useForm";
+import {startRegister} from "../../actions/auth";
 
 export const RegisterScreen = () => {
 
+  const dispatch = useDispatch()
+
   const [formValues, handleInputChange] = useForm({
     email: 'juan@juanoa.com',
-    name: 'Juan',
-    password: '123456'
+    password: '123456',
+    name: 'Juan'
   });
 
-  const {email, name, password} = formValues
+  const {email, password, name} = formValues
 
   const handleLogin = (e) => {
     e.preventDefault()
+    dispatch(startRegister(email, password, name))
   }
 
   return (
@@ -23,7 +28,7 @@ export const RegisterScreen = () => {
       <h2 className="text-center mb-3">Register</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="email"
             name="email"

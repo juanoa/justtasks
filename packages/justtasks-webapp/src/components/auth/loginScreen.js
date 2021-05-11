@@ -1,10 +1,14 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import './style.css'
 import {useForm} from "../../hooks/useForm";
+import {startLogin} from "../../actions/auth";
 
 export const LoginScreen = () => {
+
+  const dispatch = useDispatch()
 
   const [formValues, handleInputChange] = useForm({
     email: 'juan@juanoa.com',
@@ -15,6 +19,7 @@ export const LoginScreen = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
+    dispatch(startLogin(email, password))
   }
 
   return (
@@ -22,7 +27,7 @@ export const LoginScreen = () => {
       <h2 className="text-center mb-3">Log in</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="email"
             name="email"

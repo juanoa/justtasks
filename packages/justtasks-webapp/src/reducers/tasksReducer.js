@@ -40,6 +40,11 @@ export const TasksReducer = (state = initialState, action) => {
           t => (t.id !== action.payload.id)
         )
       }
+
+    case types.taskLogout:
+      return {
+        ...initialState
+      }
     default:
       return state
   }

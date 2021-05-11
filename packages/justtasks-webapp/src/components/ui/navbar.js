@@ -1,7 +1,17 @@
 import React from 'react'
 import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {startLogout} from "../../actions/auth";
 
 export const Navbar = () => {
+
+  const {name, email} = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(startLogout())
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -19,11 +29,12 @@ export const Navbar = () => {
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button"
                  data-bs-toggle="dropdown" aria-expanded="false">
-                Juan (juan@juanoa.com)
+                {name} ({email})
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><Link className="dropdown-item" to="/">Configuration</Link></li>
-                <li><Link className="dropdown-item text-danger" to="/">Logout</Link></li>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <li><a className="dropdown-item text-danger" onClick={handleLogout} >Logout</a></li>
               </ul>
             </li>
           </ul>

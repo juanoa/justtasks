@@ -1,33 +1,51 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Redirect,
-  Route
 } from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux";
 
 import {DashboardRouter} from './dashboardRouter'
 import {LoginScreen} from '../components/auth/loginScreen'
 import {RegisterScreen} from '../components/auth/registerScreen'
+import {PublicRoute} from "./publicRoute";
+import {PrivateRoute} from "./privateRoute";
+import {startChecking} from "../actions/auth";
 
 export const AppRouter = () => {
+
+  const dispatch = useDispatch()
+  const {checking, uid} = useSelector(state => state.auth)
+
+  useEffect(() => {
+    dispatch(startChecking())
+  }, [dispatch]);
+
+  if (checking) {
+    return <h5>Espere...</h5>
+  }
+
   return (
     <Router>
       <div>
         <Switch>
-          <Route
+          <PublicRoute
             exact
             path="/login"
             component={LoginScreen}
+            isAuthenticated={!!uid}
           />
-          <Route
+          <PublicRoute
             exact
             path="/register"
             component={RegisterScreen}
+            isAuthenticated={!!uid}
           />
-          <Route
+          <PrivateRoute
             path="/"
             component={DashboardRouter}
+            isAuthenticated={!!uid}
           />
           <Redirect to='/login' />
         </Switch>
