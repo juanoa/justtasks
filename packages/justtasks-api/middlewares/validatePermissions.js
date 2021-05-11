@@ -22,10 +22,11 @@ const validateJWT = (req, res = response, next) => {
     }
 
     try {
-        const {id, username} = jwt.verify(token, process.env.SECRET_JWT_SEED)
+        const {uid, name, email} = jwt.verify(token, process.env.SECRET_JWT_SEED)
 
-        req.id = id
-        req.username = username
+        req.uid = uid
+        req.name = name
+        req.email = email
 
     } catch (e) {
         return res.status(401).json({

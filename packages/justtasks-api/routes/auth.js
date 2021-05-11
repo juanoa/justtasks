@@ -1,6 +1,6 @@
 /*
     User/auth routes
-    host + /api/auth
+    host + /v1/auth
 */
 
 const {Router} = require('express')
@@ -16,6 +16,7 @@ const {
 } = require('../controllers/auth')
 
 const {validateJWT} = require('../middlewares/validatePermissions')
+const {validateParameters} = require("../middlewares/validateParameters");
 
 /*
     RENEW JWT
@@ -36,7 +37,9 @@ router.get(
 router.post(
     '/',
     [
-
+      check('email', 'The email is mandatory').isEmail(),
+      check('password', 'The password must have 6 characters or more').isLength({min: 6}),
+      validateParameters
     ],
     login
 )
@@ -47,7 +50,10 @@ router.post(
 router.post(
     '/new',
     [
-
+      check('name', 'The name is mandatory').not().isEmpty(),
+      check('email', 'The email is mandatory').isEmail(),
+      check('password', 'The password must have 6 characters or more').isLength({min: 6}),
+      validateParameters
     ],
     register
 )

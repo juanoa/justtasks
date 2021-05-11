@@ -7,6 +7,14 @@ const TaskSchema = Schema(
       required: true,
       unique: true
     },
+    day: {
+      type: String
+    },
+    completed: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
