@@ -32,7 +32,6 @@ export const taskStartAddNew = (title, day) => {
         day,
         completed: false
       }
-
       const respuesta = await fetchWithToken('tasks', task, 'POST')
       const body = await respuesta.json()
 
