@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import Swal from "sweetalert2";
 
 import './style.css'
 import {useForm} from "../../hooks/useForm";
@@ -18,15 +19,19 @@ export const RegisterScreen = () => {
 
   const {email, password, name} = formValues
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault()
-    dispatch(startRegister(email, password, name))
+    if (password.length < 6) {
+      Swal.fire('Weak password', 'The password must be at least 6 characters long', 'error')
+    } else {
+      dispatch(startRegister(email, password, name))
+    }
   }
 
   return (
-    <div className="auth-form shadow">
+    <div className="auth-form rounded shadow">
       <h2 className="text-center mb-3">Register</h2>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleRegister}>
         <div className="form-group">
           <label>Email</label>
           <input

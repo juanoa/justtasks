@@ -23,7 +23,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <div className="auth-form shadow">
+    <div className="auth-form rounded shadow">
       <h2 className="text-center mb-3">Log in</h2>
       <form onSubmit={handleLogin}>
         <div className="form-group">
