@@ -47,7 +47,7 @@ export const LoginScreen = () => {
           />
         </div>
         <div className="form-group text-center mt-4">
-          <button type="submit" className="btn btn-primary btn-block">Log in</button>
+          <button type="submit" className="btn btn-danger btn-block">Log in</button>
         </div>
       </form>
       <p className="text-center mt-3">

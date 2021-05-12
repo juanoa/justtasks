@@ -63,7 +63,7 @@ export const RegisterScreen = () => {
           />
         </div>
         <div className="form-group text-center mt-4">
-          <button type="submit" className="btn btn-primary btn-block">Register</button>
+          <button type="submit" className="btn btn-danger btn-block">Register</button>
         </div>
       </form>
       <p className="text-center mt-3">
