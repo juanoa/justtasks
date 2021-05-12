@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 
 import {DashboardScreen} from "../components/tasks/dashboardScreen";
+import {ConfigurationScreen} from "../components/configuration/configurationScreen";
 import {Navbar} from "../components/ui/navbar";
 
 export const DashboardRouter = () => {
@@ -15,10 +16,15 @@ export const DashboardRouter = () => {
       <Switch>
         <Route
           exact
-          path="/"
+          path="/dashboard"
           component={DashboardScreen}
         />
-        <Redirect to='/'/>
+        <Route
+          exact
+          path="/configuration"
+          component={ConfigurationScreen}
+        />
+        <Redirect to='/dashboard'/>
       </Switch>
     </>
   )

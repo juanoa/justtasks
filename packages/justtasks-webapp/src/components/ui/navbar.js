@@ -15,7 +15,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">JustTasks</Link>
+        <Link className="navbar-brand" to="/dashboard">JustTasks</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"/>
         </button>
@@ -28,7 +28,7 @@ export const Navbar = () => {
                 {name} ({email})
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><Link className="dropdown-item" to="/">Configuration</Link></li>
+                <li><Link className="dropdown-item" to="/configuration">Configuration</Link></li>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <li><a className="dropdown-item text-danger" onClick={handleLogout} >Logout</a></li>
               </ul>
