@@ -13,6 +13,7 @@ import {PublicRoute} from "./publicRoute";
 import {PrivateRoute} from "./privateRoute";
 import {startChecking} from "../actions/auth";
 import {Loading} from "../components/ui/Loading";
+import {LandingScreen} from "../components/landing/landingScreen";
 
 export const AppRouter = () => {
 
@@ -43,12 +44,18 @@ export const AppRouter = () => {
             component={RegisterScreen}
             isAuthenticated={!!uid}
           />
+          <PublicRoute
+            exact
+            path="/"
+            component={LandingScreen}
+            isAuthenticated={!!uid}
+          />
           <PrivateRoute
             path="/"
             component={DashboardRouter}
             isAuthenticated={!!uid}
           />
-          <Redirect to='/login' />
+          <Redirect to='/' />
         </Switch>
       </div>
     </Router>
