@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 
 const {generateJWT} = require('../helpers/jwt')
 const User = require('../models/User')
+const Task = require('../models/Task')
 
 const revalidateToken = async (req, res = response) => {
   const {uid, name, email} = req
@@ -105,15 +106,86 @@ const register = async (req, res = response) => {
 }
 
 const updateUser = async (req, res = response) => {
-  return res.json({
-    ok: true
-  })
+  const {uid} = req
+  const userId = req.params.id
+
+  try {
+    const user = await User.findById(userId)
+
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'The user does not exist'
+      })
+    }
+
+    if (user._id.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: 'You can not update this user'
+      })
+    }
+
+    if (req.body.password) {
+      const salt = bcrypt.genSaltSync()
+      req.body.password = bcrypt.hashSync(req.body.password, salt)
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, {$set: req.body},{new: true})
+
+    return res.status(201).json({
+      ok: true,
+      user: {
+        _id: updatedUser.id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+      },
+    })
+
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({
+      ok: false,
+      msg: 'Talk with the admin'
+    })
+  }
 }
 
 const deleteUser = async (req, res = response) => {
-  return res.json({
-    ok: true
-  })
+  const {uid} = req
+  const userId = req.params.id
+
+  try {
+    const user = await User.findById(userId)
+
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        msg: 'The user does not exist'
+      })
+    }
+
+    if (user._id.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: 'You can not delete this user'
+      })
+    }
+
+    await Task.deleteMany({user: user._id})
+    await User.findByIdAndDelete(userId)
+
+    return res.status(201).json({
+      ok: true
+    })
+
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({
+      ok: false,
+      msg: 'Talk with the admin'
+    })
+  }
 }
 
 module.exports = {
