@@ -38,6 +38,7 @@ export const RegisterScreen = () => {
             type="email"
             name="email"
             className="form-control"
+            autoComplete="off"
             value={email}
             onChange={handleInputChange}
           />
@@ -48,6 +49,7 @@ export const RegisterScreen = () => {
             type="name"
             name="name"
             className="form-control"
+            autoComplete="off"
             value={name}
             onChange={handleInputChange}
           />
@@ -58,6 +60,7 @@ export const RegisterScreen = () => {
             type="password"
             name="password"
             className="form-control"
+            autoComplete="off"
             value={password}
             onChange={handleInputChange}
           />

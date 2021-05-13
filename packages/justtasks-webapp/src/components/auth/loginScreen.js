@@ -32,6 +32,7 @@ export const LoginScreen = () => {
             type="email"
             name="email"
             className="form-control"
+            autoComplete="off"
             value={email}
             onChange={handleInputChange}
           />
@@ -42,6 +43,7 @@ export const LoginScreen = () => {
             type="password"
             name="password"
             className="form-control"
+            autoComplete="off"
             value={password}
             onChange={handleInputChange}
           />
