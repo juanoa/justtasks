@@ -18,6 +18,7 @@ export const OpenSourceSection = () => {
             <img
               src={OpenSource}
               className="w-100"
+              alt="Open Source"
             />
           </div>
         </div>
