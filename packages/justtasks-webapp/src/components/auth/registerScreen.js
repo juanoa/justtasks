@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import Swal from "sweetalert2";
 
@@ -11,8 +11,12 @@ export const RegisterScreen = () => {
 
   const dispatch = useDispatch()
 
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  let emailParams = params.get('email') || '';
+
   const [formValues, handleInputChange] = useForm({
-    email: '',
+    email: emailParams,
     password: '',
     name: ''
   });
