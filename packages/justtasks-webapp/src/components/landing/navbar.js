@@ -1,11 +1,19 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
+import LogoDark from '../../img/just-tasks-logo-dark.png'
+
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">JustTasks</Link>
+        <Link className="navbar-brand" to="/">
+          <img
+            src={LogoDark}
+            alt="logo"
+            height={40}
+          />
+        </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"/>
         </button>

@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {startLogout} from "../../actions/auth";
 
+import LogoLight from "../../img/just-tasks-logo-light.png";
+
 export const Navbar = () => {
 
   const {name, email} = useSelector(state => state.auth)
@@ -15,7 +17,13 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/dashboard">JustTasks</Link>
+        <Link className="navbar-brand" to="/dashboard">
+          <img
+            src={LogoLight}
+            alt="logo"
+            height={40}
+          />
+        </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"/>
         </button>
@@ -23,7 +31,7 @@ export const Navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0" />
           <ul className="navbar-nav">
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button"
+              <a className="nav-link dropdown-toggle text-white" href="/" id="navbarDropdownMenuLink" role="button"
                  data-bs-toggle="dropdown" aria-expanded="false">
                 {name} ({email})
               </a>
