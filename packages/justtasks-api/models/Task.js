@@ -5,7 +5,6 @@ const TaskSchema = new Schema(
     title: {
       type: String,
       required: true,
-      unique: true
     },
     day: {
       type: String
