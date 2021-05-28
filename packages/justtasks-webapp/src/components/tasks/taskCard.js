@@ -23,7 +23,7 @@ export const TaskCard = ({task, index, isToday}) => {
         <div className="card-body d-flex justify-content-between">
           <del>{task.title}</del>
           <i
-            className={`bi bi-arrow-90deg-up ${(isToday) ? 'text-danger' : ''}`}
+            className={`bi bi-check-circle ${(isToday) ? 'text-danger' : ''}`}
             onClick={incompleteTask}
           />
         </div>
@@ -45,7 +45,7 @@ export const TaskCard = ({task, index, isToday}) => {
             <div className="card-body d-flex justify-content-between">
               <span>{task.title}</span>
               <i
-                className={`bi bi-check-lg ${(isToday) ? 'text-danger' : ''}`}
+                className={`bi bi-circle ${(isToday) ? 'text-danger' : ''}`}
                 onClick={completeTask}
               />
             </div>
