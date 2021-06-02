@@ -6,7 +6,7 @@ import CompleteTask from "./img/complete-task.gif"
 
 export const FeaturesSection = () => {
   return (
-    <div className="position-relative overflow-hidden p-3 p-md-5" id="features">
+    <div className="position-relative overflow-hidden p-3 p-md-5">
       <div className="col-md-10 pt-lg-5 pb-lg-5 mx-auto">
         <h2>Features</h2>
         <div className="row mt-4 text-center">

@@ -4,7 +4,7 @@ import OpenSource from "./img/openSource.svg"
 
 export const OpenSourceSection = () => {
   return (
-    <div className="position-relative overflow-hidden p-3 p-md-5 bg-dark text-light" id="opensource">
+    <div className="position-relative overflow-hidden p-3 p-md-5 bg-dark text-light">
       <div className="col-md-10 pt-lg-5 pb-lg-5 mx-auto">
         <div className="row">
           <div className="col-md-6">

@@ -12,7 +12,7 @@ import {RegisterScreen} from '../components/auth/registerScreen'
 import {PublicRoute} from "./publicRoute";
 import {PrivateRoute} from "./privateRoute";
 import {startChecking} from "../actions/auth";
-import {Loading} from "../components/ui/Loading";
+import {Loading} from "../components/ui/loading";
 import {LandingScreen} from "../components/landing/landingScreen";
 
 export const AppRouter = () => {

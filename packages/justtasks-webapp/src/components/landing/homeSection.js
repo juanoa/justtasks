@@ -1,52 +1,24 @@
 import React from 'react'
-import {useHistory} from 'react-router-dom'
-import {useForm} from "../../hooks/useForm";
+import {Link} from 'react-router-dom'
+import LogoLight from "../../img/just-tasks-logo-light.png";
 
 export const HomeSection = () => {
 
-  const history = useHistory();
-
-  const [formValues, handleInputChange] = useForm({
-    email: ''
-  });
-
-  const {email} = formValues
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    history.push(`/register?email=${email}`)
-  }
-
   return (
-    <div className="position-relative overflow-hidden p-3 p-md-5 text-center bg-dark text-white" id="home">
+    <div className="position-relative overflow-hidden p-3 p-md-5 text-center bg-dark text-white">
       <div className="col-md-8 p-lg-5 mx-auto my-5">
-        <h1>That is JustTasks: <span className="fw-light">just tasks</span></h1>
+        <img
+          src={LogoLight}
+          alt="logo"
+          height={75}
+          className="mb-5"
+        />
+        <h1>It's simple, it's easy, It's JustTasks</h1>
         <p className="lead fw-normal mt-4">
           No projects, no labels, no priorities, no teams, only tasks
         </p>
-        <div className="col-md-6 mx-auto mt-5">
-          <form onSubmit={handleSubmit}>
-            <div className="input-group mb-3">
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Your email"
-                aria-describedby="button-addon2"
-                name="email"
-                autoComplete="off"
-                value={email}
-                onChange={handleInputChange}
-              />
-              <button
-                className="btn btn-danger"
-                type="submit"
-                id="button-addon2"
-              >
-                Sign up <br/><small>(Free forever)</small>
-              </button>
-            </div>
-          </form>
-        </div>
+        <Link to="/register" className="btn btn-lg btn-danger mt-5">Register now</Link> <Link to="/login" className="btn btn-lg btn-outline-danger mt-5">Login</Link>
+        <p className="font-monospace mt-2"><small>(free forever)</small></p>
       </div>
     </div>
   )

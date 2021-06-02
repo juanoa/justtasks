@@ -18,7 +18,7 @@ export const RegisterSection = () => {
   }
 
   return (
-    <div className="position-relative overflow-hidden p-3 p-md-5 text-center" id="home">
+    <div className="position-relative overflow-hidden p-3 p-md-5 text-center">
       <div className="col-md-8 mx-auto my-5">
         <h1>That's all folks!</h1>
         <p className="lead fw-normal mt-4">
