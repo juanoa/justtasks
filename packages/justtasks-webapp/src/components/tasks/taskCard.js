@@ -46,6 +46,9 @@ export const TaskCard = ({task, index, isToday}) => {
               <span>{task.title}</span>
               <i
                 className={`bi bi-circle ${(isToday) ? 'text-danger' : ''}`}
+                style={{
+                  marginLeft: 10
+                }}
                 onClick={completeTask}
               />
             </div>
