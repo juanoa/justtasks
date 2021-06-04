@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="./src/img/just-tasks-logo-dark.png" width="150" />
+  <img alt="Logo" src="./src/img/just-tasks-logo-dark.png" width="400" />
 </div>
 <h1 align="center">
   JustTasks
