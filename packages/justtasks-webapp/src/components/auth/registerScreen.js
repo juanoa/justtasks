@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import './style.css'
 import {useForm} from "../../hooks/useForm";
 import {startRegister} from "../../actions/auth";
+import {Seo} from "../seo";
 
 export const RegisterScreen = () => {
 
@@ -33,49 +34,52 @@ export const RegisterScreen = () => {
   }
 
   return (
-    <div className="auth-form rounded shadow">
-      <h2 className="text-center mb-3">Register</h2>
-      <form onSubmit={handleRegister}>
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            autoComplete="off"
-            value={email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form-group mt-3">
-          <label>Name</label>
-          <input
-            type="name"
-            name="name"
-            className="form-control"
-            autoComplete="off"
-            value={name}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form-group mt-3">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            autoComplete="off"
-            value={password}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form-group text-center mt-4">
-          <button type="submit" className="btn btn-danger btn-block">Register</button>
-        </div>
-      </form>
-      <p className="text-center mt-3">
-        <Link to="/login">Already have an account? Login</Link>
-      </p>
-    </div>
+    <>
+      <Seo title="Register | JustTasks" />
+      <div className="auth-form rounded shadow">
+        <h2 className="text-center mb-3">Register</h2>
+        <form onSubmit={handleRegister}>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              autoComplete="off"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Name</label>
+            <input
+              type="name"
+              name="name"
+              className="form-control"
+              autoComplete="off"
+              value={name}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              autoComplete="off"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="form-group text-center mt-4">
+            <button type="submit" className="btn btn-danger btn-block">Register</button>
+          </div>
+        </form>
+        <p className="text-center mt-3">
+          <Link to="/login">Already have an account? Login</Link>
+        </p>
+      </div>
+    </>
   )
 }
