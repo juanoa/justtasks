@@ -9,6 +9,9 @@ const TaskSchema = new Schema(
     day: {
       type: String
     },
+    notes: {
+      type: String
+    },
     completed: {
       type: Boolean,
       required: true,
