@@ -42,6 +42,19 @@ export const TasksReducer = (state = initialState, action) => {
       return {
         ...initialState
       }
+
+    case types.taskSetActive:
+      return {
+        ...state,
+        activeTask: action.payload
+      }
+
+    case types.taskClearActive:
+      return {
+        ...state,
+        activeTask: null
+      }
+
     default:
       return state
   }

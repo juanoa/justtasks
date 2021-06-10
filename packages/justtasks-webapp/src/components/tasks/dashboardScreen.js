@@ -4,8 +4,9 @@ import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 import {DayColumn} from "./dayColumn";
 import {getBackwardDays, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
-import {taskStartDeleteFromDrag, taskStartLoading, taskStartUpdateDayFromDrag} from "../../actions/tasks";
+import {taskStartDelete, taskStartLoading, taskStartUpdateDayFromDrag} from "../../actions/tasks";
 import {Seo} from "../seo";
+import {TaskModal} from "./taskModal";
 
 export const DashboardScreen = () => {
 
@@ -22,7 +23,7 @@ export const DashboardScreen = () => {
     const taskId = e.draggableId
     const dayDest = e.destination?.droppableId
     if (dayDest === 'delete') {
-      dispatch(taskStartDeleteFromDrag(taskId))
+      dispatch(taskStartDelete(taskId))
     } else if (dayDest) {
       dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
     }
@@ -85,6 +86,8 @@ export const DashboardScreen = () => {
           )}
         </Droppable>
       </DragDropContext>
+
+      <TaskModal />
     </>
   )
 }

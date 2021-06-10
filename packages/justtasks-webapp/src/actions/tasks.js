@@ -100,7 +100,7 @@ const taskUpdate = (task) => ({
   payload: task
 })
 
-export const taskStartDeleteFromDrag = (id) => {
+export const taskStartDelete = (id) => {
   return async (dispatch, getState) => {
     const {tasks} = getState().tasks
     const task = tasks.find(t => t._id === id)
@@ -124,6 +124,16 @@ const taskDelete = (task) => ({
   type: types.taskDelete,
   payload: task
 })
+
+export const taskSetActive = (task) => ({
+  type: types.taskSetActive,
+  payload: task
+})
+
+export const taskClearActive = () => ({
+  type: types.taskClearActive
+})
+
 
 export const taskLogout = () => ({
   type: types.taskLogout
