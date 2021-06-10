@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Modal from 'react-modal'
 import {useDispatch, useSelector} from "react-redux";
 
-import {useForm} from "../../hooks/useForm";
 import './style.css'
-import {eventClearActiveEvent, startTaskUpdate, taskClearActive} from "../../actions/tasks";
+import {startTaskUpdate, taskClearActive} from "../../actions/tasks";
 import Swal from "sweetalert2";
 
 const customStyles = {
