@@ -3,10 +3,15 @@ const {response} = require('express')
 const Task = require('../models/Task')
 
 const getTasks = async (req, res = response) => {
-  const {uid} = req
+  const {uid, query} = req
 
   try {
-    const tasks = await Task.find({user: uid})
+    delete query.user
+    const filter = {
+      user: uid,
+      ...query
+    }
+    const tasks = await Task.find(filter);
 
     return res.json({
       ok: true,
