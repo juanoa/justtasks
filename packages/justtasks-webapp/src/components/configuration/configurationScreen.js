@@ -3,6 +3,7 @@ import {PersonalInfoConfiguration} from "./personalInfoConfiguration";
 import {SecurityConfiguration} from "./securityConfiguration";
 import {DeleteAccountConfiguration} from "./deleteAccountConfiguration";
 import {Seo} from "../seo";
+import {PremiumConfiguration} from "./premiumConfiguration";
 
 export const ConfigurationScreen = () => {
   return (
@@ -12,6 +13,7 @@ export const ConfigurationScreen = () => {
         <h1>Configuration</h1>
         <p>Configuration page</p>
         <PersonalInfoConfiguration />
+        <PremiumConfiguration />
         <SecurityConfiguration />
         <DeleteAccountConfiguration />
       </div>

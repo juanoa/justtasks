@@ -38,6 +38,8 @@ export const taskStartAddNew = (title, day) => {
       if (body.ok) {
         task._id = body.task._id
         dispatch(taskAddNew(task))
+      } else {
+        Swal.fire('Error', body.msg, 'error')
       }
     } catch (e) {
       console.log(e)

@@ -7,7 +7,7 @@ import LogoLight from "../../img/just-tasks-logo-light.png";
 
 export const Navbar = () => {
 
-  const {name, email} = useSelector(state => state.auth)
+  const {name, email, premium} = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ export const Navbar = () => {
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle text-white" href="/" id="navbarDropdownMenuLink" role="button"
                  data-bs-toggle="dropdown" aria-expanded="false">
-                {name} ({email})
+                {premium && <i className="bi bi-star-fill"/>} {name} ({email})
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><Link className="dropdown-item" to="/configuration">Configuration</Link></li>

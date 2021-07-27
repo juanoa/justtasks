@@ -15,7 +15,8 @@ export const startLogin = (email, password) => {
       dispatch(login({
         uid: body.user.id,
         name: body.user.name,
-        email: body.user.email
+        email: body.user.email,
+        premium: body.user.premium
       }))
     } else {
       Swal.fire('Error', 'Email or password are wrong', 'error')
@@ -34,7 +35,8 @@ export const startRegister = (email, password, name) => {
       dispatch(login({
         uid: body.user.id,
         name: body.user.name,
-        email: body.user.email
+        email: body.user.email,
+        premium: body.user.premium
       }))
     } else {
       Swal.fire('Error', body.msg, 'error')
@@ -52,7 +54,8 @@ export const startUpdateUser = ({...props}) => {
       dispatch(updateUser({
         uid: body.user._id,
         name: body.user.name,
-        email: body.user.email
+        email: body.user.email,
+        premium: body.user.premium
       }))
       Swal.fire('User updated', 'Configuration updated successfully', 'success')
     } else {
@@ -89,7 +92,8 @@ export const startChecking = () => {
       dispatch(login({
         uid: body.user.id,
         name: body.user.name,
-        email: body.user.email
+        email: body.user.email,
+        premium: body.user.premium
       }))
     } else {
       dispatch(checkingFinish())
