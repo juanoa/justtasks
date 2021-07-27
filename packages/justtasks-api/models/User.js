@@ -23,6 +23,9 @@ const UserSchema = Schema(
     premiumSince: {
       type: Date,
     },
+    stripeUserId: {
+      type: String
+    }
   },
   {
     timestamps: true
