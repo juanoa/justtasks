@@ -6,17 +6,18 @@ const User = require('../models/User')
 const Task = require('../models/Task')
 
 const revalidateToken = async (req, res = response) => {
-  const {uid, name, email} = req
+  const {uid, name, email, premium} = req
 
   // Generar un nuevo JWT
-  const token = await generateJWT(uid, name, email)
+  const token = await generateJWT(uid, name, email, premium)
 
   return res.json({
     ok: true,
     user: {
       id: uid,
       name,
-      email
+      email,
+      premium
     },
     token
   })
@@ -44,7 +45,7 @@ const login = async (req, res = response) => {
       })
     }
 
-    const token = await generateJWT(user.id, user.name, user.email)
+    const token = await generateJWT(user.id, user.name, user.email, user.premium)
 
     return res.status(201).json({
       ok: true,
@@ -52,6 +53,7 @@ const login = async (req, res = response) => {
         id: user.id,
         name: user.name,
         email: user.email,
+        premium: user.premium
       },
       token
     })
@@ -85,7 +87,7 @@ const register = async (req, res = response) => {
 
     await user.save()
 
-    const token = await generateJWT(user.id, user.name, user.email)
+    const token = await generateJWT(user.id, user.name, user.email, user.premium)
 
     return res.status(201).json({
       ok: true,
@@ -93,6 +95,7 @@ const register = async (req, res = response) => {
         id: user.id,
         name: user.name,
         email: user.email,
+        premium: user.premium
       },
       token
     })
@@ -139,6 +142,7 @@ const updateUser = async (req, res = response) => {
         _id: updatedUser.id,
         name: updatedUser.name,
         email: updatedUser.email,
+        premium: updatedUser.premium,
       },
     })
 

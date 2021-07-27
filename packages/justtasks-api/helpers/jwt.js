@@ -7,12 +7,13 @@ const jwt = require('jsonwebtoken')
     @param  {String}    username    Username of the user
     @return {String}                Valid token
  */
-const generateJWT = (id, name, email) => {
+const generateJWT = (id, name, email, premium) => {
     return new Promise((resolve, reject) => {
         const payload = {
             uid: id,
             name,
-            email
+            email,
+            premium
         }
 
         jwt.sign(payload, process.env.SECRET_JWT_SEED, {

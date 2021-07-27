@@ -15,6 +15,14 @@ const UserSchema = Schema(
       type: String,
       required: true
     },
+    premium: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    premiumSince: {
+      type: Date,
+    },
   },
   {
     timestamps: true

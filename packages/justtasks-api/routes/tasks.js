@@ -14,7 +14,7 @@ const {
   deleteTask
 } = require('../controllers/tasks')
 
-const {validateJWT} = require('../middlewares/validatePermissions')
+const {validateJWT, validateNumberOfTasks} = require('../middlewares/validatePermissions')
 const {validateParameters} = require("../middlewares/validateParameters");
 
 /*
@@ -38,7 +38,8 @@ router.post(
     check('day', 'The day is mandatory').not().isEmpty(),
     check('completed', 'The completed is mandatory').isBoolean(),
     validateParameters,
-    validateJWT
+    validateJWT,
+    validateNumberOfTasks
   ],
   createTask
 )
@@ -53,7 +54,8 @@ router.put(
     check('day', 'The day is mandatory').not().isEmpty(),
     check('completed', 'The completed is mandatory').isBoolean(),
     validateParameters,
-    validateJWT
+    validateJWT,
+    validateNumberOfTasks
   ],
   updateTask
 )
