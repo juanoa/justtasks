@@ -6,7 +6,9 @@ const User = require('../models/User')
 const Task = require('../models/Task')
 
 const revalidateToken = async (req, res = response) => {
-  const {uid, name, email, premium} = req
+  const {uid} = req
+
+  const {name, email, premium} = await User.findById(uid)
 
   // Generar un nuevo JWT
   const token = await generateJWT(uid, name, email, premium)
