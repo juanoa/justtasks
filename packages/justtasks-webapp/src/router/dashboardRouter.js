@@ -16,7 +16,7 @@ export const DashboardRouter = () => {
       <Switch>
         <Route
           exact
-          path="/dashboard"
+          path="/home"
           component={DashboardScreen}
         />
         <Route
@@ -24,7 +24,7 @@ export const DashboardRouter = () => {
           path="/configuration"
           component={ConfigurationScreen}
         />
-        <Redirect to='/dashboard'/>
+        <Redirect to='/home'/>
       </Switch>
     </>
   )
