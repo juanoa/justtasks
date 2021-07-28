@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: "https://www.justtasks.app",
     title: "JusTasks",
-    description: "No projects, no labels, no priorities, no teams, only tasks",
+    description: "The only task manager that focuses on what really matters. No projects, no priorities, no teams, no labels, just tasks.",
     author: 'JustTasks'
   },
   plugins: [
@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "G-LHZWX1FHR4",
+        trackingId: "280938744",
       },
     },
     "gatsby-plugin-react-helmet",

@@ -7,7 +7,7 @@ import {FeatureSection} from "../components/sections/feature";
 const IndexPage = () => {
   return (
     <>
-      <Seo />
+      <Seo title="JustTasks | The only task manager that focuses on what really matters" />
       <Layout>
         <HeroSection />
         <FeatureSection />
