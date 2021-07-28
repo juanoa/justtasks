@@ -1,7 +1,9 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "justtasks-web",
+    siteUrl: "https://www.justtasks.app",
+    title: "JusTasks",
+    description: "No projects, no labels, no priorities, no teams, only tasks",
+    author: 'JustTasks'
   },
   plugins: [
     "gatsby-plugin-image",
@@ -38,5 +40,6 @@ module.exports = {
       },
       __key: "pages",
     },
+    'gatsby-plugin-postcss',
   ],
 };
