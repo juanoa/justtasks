@@ -17,6 +17,7 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 import Icon from '../../images/icon.png'
+import {Link} from "gatsby";
 
 const solutions = [
   {
@@ -88,14 +89,14 @@ const Header = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex justify-between items-center border-b-2 border-gray-100 py-5 md:justify-start md:space-x-10">
               <div className="flex justify-start lg:w-0 lg:flex-1">
-                <a href="/">
+                <Link to="/">
                   <span className="sr-only">JustTasks</span>
                   <img
                     className="h-8 w-auto sm:h-10"
                     src={Icon}
                     alt="JustTasks logo"
                   />
-                </a>
+                </Link>
               </div>
               <div className="-mr-2 -my-2 md:hidden">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500">
@@ -103,7 +104,7 @@ const Header = () => {
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              {/*<Popover.Group as="nav" className="hidden md:flex space-x-10">*/}
+              <Popover.Group as="nav" className="hidden md:flex space-x-10">
               {/*  <Popover className="relative">*/}
               {/*    {({ open }) => (*/}
               {/*      <>*/}
@@ -173,12 +174,12 @@ const Header = () => {
               {/*    )}*/}
               {/*  </Popover>*/}
 
-              {/*  <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">*/}
-              {/*    Pricing*/}
-              {/*  </a>*/}
-              {/*  <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">*/}
-              {/*    Docs*/}
-              {/*  </a>*/}
+                <Link to="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                  Home
+                </Link>
+                <Link to="/premium" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                  Premium
+                </Link>
 
               {/*  <Popover className="relative">*/}
               {/*    {({ open }) => (*/}
@@ -257,7 +258,7 @@ const Header = () => {
               {/*      </>*/}
               {/*    )}*/}
               {/*  </Popover>*/}
-              {/*</Popover.Group>*/}
+              </Popover.Group>
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                 <a href="https://dashboard.justtasks.app/login" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                   Sign in
