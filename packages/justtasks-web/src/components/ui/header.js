@@ -259,11 +259,11 @@ const Header = () => {
               {/*  </Popover>*/}
               {/*</Popover.Group>*/}
               <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                <a href="https://dashboard.justtasks.app/login" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                   Sign in
                 </a>
                 <a
-                  href="#"
+                  href="https://dashboard.justtasks.app/register"
                   className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700"
                 >
                   Sign up
@@ -322,14 +322,14 @@ const Header = () => {
                 <div className="py-6 px-5 space-y-6">
                   <div>
                     <a
-                      href="#"
+                      href="https://dashboard.justtasks.app/register"
                       className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700"
                     >
                       Sign up
                     </a>
                     <p className="mt-6 text-center text-base font-medium text-gray-500">
                       Already have an account?{' '}
-                      <a href="#" className="text-red-600 hover:text-red-500">
+                      <a href="https://dashboard.justtasks.app/login" className="text-red-600 hover:text-red-500">
                         Sign in
                       </a>
                     </p>
