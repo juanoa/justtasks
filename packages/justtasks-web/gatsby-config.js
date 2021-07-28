@@ -41,5 +41,14 @@ module.exports = {
       __key: "pages",
     },
     'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/content/posts`,
+        __key: "posts",
+      },
+    },
+    'gatsby-transformer-remark',
   ],
 };
