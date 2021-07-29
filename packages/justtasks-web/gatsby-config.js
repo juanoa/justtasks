@@ -8,9 +8,12 @@ module.exports = {
   plugins: [
     "gatsby-plugin-image",
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "280938744",
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-LHZWX1FHR4", // Google Analytics / GA
+        ],
       },
     },
     "gatsby-plugin-react-helmet",
