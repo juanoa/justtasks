@@ -49,15 +49,15 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/premium"
                   className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
-                  Pricing
+                  Premium
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/"
+                  to="/blog"
                   className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Blog
@@ -108,12 +108,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/"
+                <a
+                  href="https://dashboard.justtasks.app"
                   className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Web App
-                </Link>
+                </a>
               </li>
               <li>
                 <Link

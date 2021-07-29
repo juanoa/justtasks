@@ -23,12 +23,6 @@ const PostTemplate = ({data}) => {
                 {frontmatter.title}
               </h1>
             </div>
-            {
-              frontmatter.excerpt &&
-              <p className="text-base text-gray-700 md:text-lg">
-                {frontmatter.excerpt}
-              </p>
-            }
           </div>
           <div className="mb-10 sm:text-center">
             <div>
@@ -62,7 +56,6 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
-        excerpt
         author
       }
     }

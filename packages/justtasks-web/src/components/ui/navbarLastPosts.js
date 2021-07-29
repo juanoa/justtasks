@@ -1,9 +1,27 @@
 import React, {Fragment} from 'react'
 import {Popover, Transition} from "@headlessui/react";
 import {ChevronDownIcon} from "@heroicons/react/solid";
-import {graphql, Link, StaticQuery} from "gatsby";
+import {graphql, Link, useStaticQuery} from "gatsby";
+import {createPostSlug} from "../../helpers/createSlug";
 
 export const NavbarLastPosts = () => {
+
+  const posts = useStaticQuery(graphql`
+    query headerQuery {
+      allMarkdownRemark {
+        edges {
+          node {
+            id
+            frontmatter {
+              slug
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Popover className="relative">
       {({open}) => (
@@ -39,40 +57,27 @@ export const NavbarLastPosts = () => {
                     Recent Posts
                   </h3>
                   <ul className="mt-4 space-y-4">
-                    <StaticQuery
-                      query={graphql`
-                        query headerQuery {
-                          allMarkdownRemark {
-                            edges {
-                              node {
-                                id
-                                frontmatter {
-                                  slug
-                                  title
-                                }
-                              }
-                            }
-                          }
-                        }
-                      `}
-                      render={data => {
-                        data.allMarkdownRemark.edges.map(post => (
-                          <li key={post.node.id} className="text-base truncate">
-                            <Link to={`/blog/${post.node.frontmatter.slug}`}
+                    {
+                      posts.allMarkdownRemark.edges.map(post => {
+                        const {id, frontmatter:{slug, title}} = post.node
+                        return (
+                          <li key={id} className="text-base truncate">
+                            <Link to={createPostSlug(slug)}
                                   className="font-medium text-gray-900 hover:text-gray-700">
-                              {post.node.frontmatter.title}
+                              {title}
                             </Link>
                           </li>
-                        ))
-                      }}
-                    />
+                        )
+                      })
+                    }
+
                   </ul>
                 </div>
                 <div className="mt-5 text-sm">
-                  <a href="#" className="font-medium text-red-600 hover:text-red-500">
+                  <Link to="/blog" className="font-medium text-red-600 hover:text-red-500">
                     {' '}
                     View all posts <span aria-hidden="true">&rarr;</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </Popover.Panel>
