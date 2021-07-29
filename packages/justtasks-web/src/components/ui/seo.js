@@ -9,7 +9,7 @@ import React from "react";
 import {Helmet} from "react-helmet";
 import {useStaticQuery, graphql} from "gatsby";
 
-function Seo({description, meta, title, index = true}) {
+function Seo({description, meta, title, index = true, homepage = false}) {
   const {site} = useStaticQuery(
     graphql`
       query {
@@ -24,6 +24,7 @@ function Seo({description, meta, title, index = true}) {
     `
   );
 
+  const metaTitle = homepage ? title : `${title} | JustTasks`
   const metaDescription = description || site.siteMetadata.description;
 
   return (
@@ -31,7 +32,7 @@ function Seo({description, meta, title, index = true}) {
       htmlAttributes={{
         lang: 'en'
       }}
-      title={title}
+      title={metaTitle}
       meta={[
         {
           name: `description`,
