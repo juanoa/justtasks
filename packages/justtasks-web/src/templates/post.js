@@ -37,7 +37,7 @@ const PostTemplate = ({data}) => {
             </div>
           </div>
           <div
-            className="2xl:max-w-prose lg:prose mx-auto"
+            className="2xl:max-w-prose prose mx-auto"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         </div>
