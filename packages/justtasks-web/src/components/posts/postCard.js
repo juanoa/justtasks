@@ -11,7 +11,7 @@ export const PostCard = ({post}) => {
       </p>
       <Link
         to={createPostSlug(frontmatter.slug)}
-        className="inline-block max-w-xs mx-auto mb-3 text-2xl font-extrabold leading-7 transition-colors duration-200 hover:text-deep-purple-accent-400"
+        className="inline-block max-w-xs mx-auto mb-3 text-2xl font-extrabold leading-7 transition-colors duration-200 hover:text-red-700"
         aria-label="Read article"
         title="Nori grape silver beet broccoli kombu beet"
       >
@@ -23,7 +23,7 @@ export const PostCard = ({post}) => {
       <Link
         to={createPostSlug(frontmatter.slug)}
         aria-label=""
-        className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+        className="inline-flex items-center font-semibold transition-colors duration-200 text-red-400 hover:text-red-800"
       >
         Read more
       </Link>
