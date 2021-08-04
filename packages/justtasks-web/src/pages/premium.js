@@ -152,6 +152,14 @@ const PremiumPage = () => {
                         <CheckCircleIcon className="w-4 h-4 text-red-400" />
                       </div>
                       <p className="font-medium text-gray-800">
+                        Task reorganization
+                      </p>
+                    </li>
+                    <li className="flex items-center">
+                      <div className="mr-2">
+                        <CheckCircleIcon className="w-4 h-4 text-red-400" />
+                      </div>
+                      <p className="font-medium text-gray-800">
                         More features coming soon!
                       </p>
                     </li>
