@@ -9,7 +9,8 @@ export const fetchWithoutToken = (endpoint, data, method='GET') => {
     return fetch(url, {
       method,
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
+        'client-datetime': (new Date()).toISOString()
       },
       body: JSON.stringify(data)
     })
@@ -24,7 +25,8 @@ export const fetchWithToken = (endpoint, data, method='GET') => {
     return fetch(url, {
       method,
       headers: {
-        'x-token': token
+        'x-token': token,
+        'client-datetime': (new Date()).toUTCString()
       }
     })
   } else {
@@ -32,7 +34,8 @@ export const fetchWithToken = (endpoint, data, method='GET') => {
       method,
       headers: {
         'Content-type': 'application/json',
-        'x-token': token
+        'x-token': token,
+        'client-datetime': (new Date()).toUTCString()
       },
       body: JSON.stringify(data)
     })

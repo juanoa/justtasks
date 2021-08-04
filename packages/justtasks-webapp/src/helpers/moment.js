@@ -1,6 +1,6 @@
 import moment from "moment";
 
-const format = "DDMMYYYY"
+const format = "YYYYMMDD"
 
 export const getNextDays = (days) => {
   const nextDays = []
