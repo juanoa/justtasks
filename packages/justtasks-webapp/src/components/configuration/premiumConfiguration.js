@@ -25,6 +25,7 @@ export const PremiumConfiguration = () => {
             <div className="col-md-6">
               <ul className="premium-features-list">
                 <li>Add <b>unlimited</b> daily tasks</li>
+                <li>Task <b>reorganization</b></li>
                 <li>Pay now, enjoy it <b>forever</b></li>
                 <li><b>Support</b> the developer</li>
               </ul>
