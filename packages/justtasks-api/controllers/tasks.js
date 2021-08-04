@@ -1,16 +1,21 @@
 const {response} = require('express')
 
 const Task = require('../models/Task')
+const {reorganizeByUser} = require('../helpers/reorganize')
 
 const getTasks = async (req, res = response) => {
-  const {uid, query} = req
-
+  const {uid, premium, query} = req
   try {
     delete query.user
     const filter = {
       user: uid,
       ...query
     }
+    
+    if (premium) {
+      await reorganizeByUser(uid, req.header('client-datetime'))
+    }
+    
     const tasks = await Task.find(filter);
 
     return res.json({

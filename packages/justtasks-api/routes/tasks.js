@@ -5,7 +5,7 @@
 
 const {Router} = require('express')
 const router = Router()
-const {check} = require('express-validator')
+const {check, header} = require('express-validator')
 
 const {
   getTasks,
@@ -23,6 +23,8 @@ const {validateParameters} = require("../middlewares/validateParameters");
 router.get(
   '/',
   [
+    header('client-datetime', 'The current date is mandatory').notEmpty(),
+    validateParameters,
     validateJWT
   ],
   getTasks
