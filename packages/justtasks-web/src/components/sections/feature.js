@@ -40,8 +40,7 @@ export const FeatureSection = () => {
               A better way to stay organized
             </p>
             <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-              Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-              accusamus quisquam.
+              Enjoy everything JustTasks has to offer that you won't find in other apps!
             </p>
           </div>
 
