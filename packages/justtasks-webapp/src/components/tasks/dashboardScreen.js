@@ -51,10 +51,10 @@ export const DashboardScreen = () => {
         onDragEnd={onDragEnd}
       >
         <div className="row m-4">
-          <div className="d-flex justify-content-between font-monospace mb-3">
-            <span className="btn btn-light" onClick={handleBackward}><i className="bi bi-arrow-left"/> Backward</span>
-            <span className="btn btn-light" onClick={handleToday}><i className="bi bi-calendar-event" /> Today</span>
-            <span className="btn btn-light" onClick={handleForward}>Forward <i className="bi bi-arrow-right"/></span>
+          <div className="d-flex justify-content-end font-monospace mb-3">
+            <span className="btn btn-dark m-1" onClick={handleBackward}><i className="bi bi-arrow-left"/></span>
+            <span className="btn m-1" onClick={handleToday}>Today</span>
+            <span className="btn btn-dark m-1" onClick={handleForward}><i className="bi bi-arrow-right"/></span>
           </div>
           {
             days.map((day, i) => (
