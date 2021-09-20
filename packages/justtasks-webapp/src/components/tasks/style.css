@@ -43,3 +43,7 @@
 .completed-task {
     text-decoration: line-through;
 }
+
+.completed-color {
+    color: #cdcdcd;
+}

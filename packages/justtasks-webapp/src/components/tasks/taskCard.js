@@ -37,7 +37,7 @@ export const TaskCard = ({task, index, isToday}) => {
         >
           <div className="card-body d-flex justify-content-between p-1">
             <span
-              className={`${(task.completed) ? 'completed-task text-muted' : ''}`}
+              className={`${(task.completed) ? 'completed-task completed-color' : ''}`}
               onClick={setActiveTaskHandle}
             >
               {task.title}
@@ -46,7 +46,7 @@ export const TaskCard = ({task, index, isToday}) => {
               {
                 task.completed &&
                 <i
-                  className={`bi bi-check-circle text-muted`}
+                  className={`bi bi-check-circle completed-color`}
                   onClick={incompleteTaskHandle}
                 />
               }
