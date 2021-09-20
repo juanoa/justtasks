@@ -52,9 +52,9 @@ export const DashboardScreen = () => {
       >
         <div className="row m-4">
           <div className="d-flex justify-content-end font-monospace mb-3">
-            <span className="btn btn-dark m-1" onClick={handleBackward}><i className="bi bi-arrow-left"/></span>
+            <span className="btn btn-light m-1" onClick={handleBackward}><i className="bi bi-arrow-left"/></span>
             <span className="btn m-1" onClick={handleToday}>Today</span>
-            <span className="btn btn-dark m-1" onClick={handleForward}><i className="bi bi-arrow-right"/></span>
+            <span className="btn btn-light m-1" onClick={handleForward}><i className="bi bi-arrow-right"/></span>
           </div>
           {
             days.map((day, i) => (
