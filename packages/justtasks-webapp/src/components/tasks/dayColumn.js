@@ -10,37 +10,27 @@ import {Droppable} from "react-beautiful-dnd";
 export const DayColumn = ({day, isToday = false}) => {
 
   const {tasks: totalTasks} = useSelector(state => state.tasks)
-  const noCompletedTasks = totalTasks.filter(t => (getFormattedDayFromDate(day) === t.day && !t.completed)) || {tasks: []}
-  const completedTasks = totalTasks.filter(t => (getFormattedDayFromDate(day) === t.day && t.completed)) || {tasks: []}
+  const dayFilterTasks = totalTasks.filter(t => (getFormattedDayFromDate(day) === t.day)) || {tasks: []}
 
   return (
     <div className="col-md-3">
-      <div className={`text-center ${(isToday) ? 'text-danger' : ''}`}>
-        <h3>{moment(day).format('dddd')}</h3>
-        <small>{moment(day).format('Do MMM')}</small>
+      <div className={`text-center ${(isToday) ? 'text-danger' : ''} d-flex justify-content-between`}>
+        <span className="h4">{moment(day).format('ddd')}</span>
+        <span>{moment(day).format('Do MMM')}</span>
       </div>
-      <hr/>
+      <hr size={5} className={`mt-0 ${(isToday) ? 'text-danger' : ''}`}/>
       <Droppable droppableId={getFormattedDayFromDate(day)}>
         {(provided, snapshot) => (
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            style={{backgroundColor: snapshot.isDraggingOver ? '#f8f9fa' : ''}}
           >
             {
-              noCompletedTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
+              dayFilterTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
             }
           </div>
         )}
       </Droppable>
-      {
-        completedTasks.length > 0 &&
-        <div className={(noCompletedTasks.length > 0) ? 'mt-4' : ''}>
-          {
-            completedTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
-          }
-        </div>
-      }
       <AddTask day={day}/>
     </div>
   )

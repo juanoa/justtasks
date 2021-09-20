@@ -39,3 +39,7 @@
     padding: 20px;
     height: auto;
 }
+
+.completed-task {
+    text-decoration: line-through;
+}

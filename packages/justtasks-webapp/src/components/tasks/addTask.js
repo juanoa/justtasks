@@ -30,7 +30,6 @@ export const AddTask = ({day}) => {
     e.preventDefault()
     dispatch(taskStartAddNew(titleNewTask, getFormattedDayFromDate(day)))
     clear()
-    setShowInput(false)
   }
 
   return (
@@ -43,7 +42,7 @@ export const AddTask = ({day}) => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="What do you have in mind?"
+                  placeholder="[Esc] to exit"
                   name="titleNewTask"
                   autoFocus={true}
                   autoComplete="off"
