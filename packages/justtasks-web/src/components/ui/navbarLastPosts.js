@@ -8,11 +8,12 @@ export const NavbarLastPosts = () => {
 
   const posts = useStaticQuery(graphql`
     query headerQuery {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
         edges {
           node {
             id
             frontmatter {
+              date
               slug
               title
             }
