@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch} from "react-redux";
+import React, {useState} from 'react'
+import {useDispatch, useSelector} from "react-redux";
 import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 import {DayColumn} from "./dayColumn";
-import {getBackwardDays, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
-import {taskStartDelete, taskStartLoading, taskStartUpdateDayFromDrag} from "../../actions/tasks";
+import {getBackwardDays, getFormattedDayFromDate, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
+import {startTaskUpdate, taskStartDelete, taskStartUpdateDayFromDrag} from "../../actions/tasks";
 import {Seo} from "../seo";
 import {TaskModal} from "./taskModal";
 
@@ -12,21 +12,67 @@ export const DashboardScreen = () => {
 
   const dispatch = useDispatch()
 
+  const {tasks: allTasks} = useSelector(state => state.tasks)
+
   const initDaysState = getNextDays(4)
   const [days, setDays] = useState(initDaysState);
 
-  useEffect(() => {
-    dispatch(taskStartLoading())
-  }, [dispatch]);
+  const getList = (day) => {
+    return allTasks
+      .filter(t => (getFormattedDayFromDate(day) === t.day))
+      .sort((a, b) => (a.index - b.index))
+      || {tasks: []}
+  }
+
+  const reorder = (list, startIndex, endIndex) => {
+    console.log(list)
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    result.forEach((task, i) => {
+      if (task.index !== i) {
+        task.index = i
+        dispatch(startTaskUpdate(task))
+      }
+    })
+    console.log(result)
+  }
+
+  const move = (source, destination, droppableSource, droppableDestination) => {
+
+  }
 
   const onDragEnd = (e) => {
-    const taskId = e.draggableId
-    const dayDest = e.destination?.droppableId
-    if (dayDest === 'delete') {
-      dispatch(taskStartDelete(taskId))
-    } else if (dayDest) {
-      dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
+    const {source, destination} = e
+    if (!destination) return
+
+    if (destination.droppableId === 'delete') {
+      dispatch(taskStartDelete(e.draggableId))
     }
+
+    if (source.droppableId === destination.droppableId) {
+      reorder (
+        getList(source.droppableId),
+        source.index,
+        destination.index
+      )
+    } else {
+      move (
+        getList(source.droppableId),
+        getList(destination.droppableId),
+        source,
+        destination
+      )
+    }
+    // const taskId = e.draggableId
+    // const dayDest = e.destination?.droppableId
+    // const indexDest = e.destination?.index
+    // if (dayDest === 'delete') {
+    //   dispatch(taskStartDelete(taskId))
+    // } else if (dayDest) {
+    //   dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
+    // }
   }
 
   const handleBackward = () => {
@@ -62,6 +108,7 @@ export const DashboardScreen = () => {
                 day={day}
                 isToday={isDateToday(day)}
                 key={i}
+                tasks={getList(day)}
               />
             ))
           }

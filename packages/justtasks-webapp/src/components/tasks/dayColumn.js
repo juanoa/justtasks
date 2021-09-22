@@ -1,16 +1,12 @@
 import React from 'react'
 import moment from 'moment'
-import {useSelector} from "react-redux";
 
 import {TaskCard} from "./taskCard";
 import {AddTask} from "./addTask";
 import {getFormattedDayFromDate} from "../../helpers/moment";
 import {Droppable} from "react-beautiful-dnd";
 
-export const DayColumn = ({day, isToday = false}) => {
-
-  const {tasks: totalTasks} = useSelector(state => state.tasks)
-  const dayFilterTasks = totalTasks.filter(t => (getFormattedDayFromDate(day) === t.day)) || {tasks: []}
+export const DayColumn = ({day, tasks, isToday = false}) => {
 
   return (
     <div className="col-md-3">
@@ -26,7 +22,7 @@ export const DayColumn = ({day, isToday = false}) => {
             {...provided.droppableProps}
           >
             {
-              dayFilterTasks.map((task, i) => <TaskCard task={task} index={i} isToday={isToday} key={i}/>)
+              tasks.map((task, i) => <TaskCard task={task} key={i}/>)
             }
           </div>
         )}

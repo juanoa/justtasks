@@ -5,7 +5,7 @@ import {startTaskUpdate, taskSetActive} from "../../actions/tasks";
 
 import './style.css'
 
-export const TaskCard = ({task, index, isToday}) => {
+export const TaskCard = ({task}) => {
 
   const dispatch = useDispatch()
 
@@ -26,7 +26,7 @@ export const TaskCard = ({task, index, isToday}) => {
   return (
     <Draggable
       draggableId={task._id}
-      index={index}
+      index={task.index}
     >
       {(provided, snapshot) => (
         <div
@@ -47,7 +47,7 @@ export const TaskCard = ({task, index, isToday}) => {
                   {" "}
                 </>
               }
-              {task.title}
+              {`${task.title} - [${task.index}]`}
             </span>
             <div style={{display: 'flex'}}>
               {

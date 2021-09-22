@@ -37,6 +37,7 @@ export const taskStartAddNew = (title, day) => {
 
       if (body.ok) {
         task._id = body.task._id
+        task.index = body.task.index
         dispatch(taskAddNew(task))
       } else {
         Swal.fire('Error', body.msg, 'error')
