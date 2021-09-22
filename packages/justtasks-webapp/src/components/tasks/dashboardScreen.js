@@ -4,7 +4,7 @@ import {DragDropContext, Droppable} from "react-beautiful-dnd";
 
 import {DayColumn} from "./dayColumn";
 import {getBackwardDays, getFormattedDayFromDate, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
-import {startTaskUpdate, taskStartDelete, taskStartUpdateDayFromDrag} from "../../actions/tasks";
+import {startTaskUpdate, taskStartDelete} from "../../actions/tasks";
 import {Seo} from "../seo";
 import {TaskModal} from "./taskModal";
 
