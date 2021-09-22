@@ -40,6 +40,13 @@ export const TaskCard = ({task, index, isToday}) => {
               className={`${(task.completed) ? 'completed-task completed-color' : ''}`}
               onClick={setActiveTaskHandle}
             >
+              {
+                task.notes &&
+                <>
+                  <i className="bi bi-card-text"/>
+                  {" "}
+                </>
+              }
               {task.title}
             </span>
             <div style={{display: 'flex'}}>
