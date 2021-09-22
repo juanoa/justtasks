@@ -28,9 +28,7 @@ export const TaskModal = () => {
 
   useEffect(() => {
     setTitle(activeTask?.title)
-    if (activeTask?.notes) {
-      setNotes(activeTask.notes)
-    }
+    setNotes(activeTask?.notes || '')
   }, [activeTask]);
 
   const closeModal = (e) => {
