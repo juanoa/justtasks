@@ -47,7 +47,7 @@ export const TaskCard = ({task}) => {
                   {" "}
                 </>
               }
-              {`${task.title} - [${task.index}]`}
+              {task.title}
             </span>
             <div style={{display: 'flex'}}>
               {
