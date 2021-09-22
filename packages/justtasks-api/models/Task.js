@@ -9,6 +9,9 @@ const TaskSchema = new Schema(
     day: {
       type: String
     },
+    index: {
+      type: Number
+    },
     notes: {
       type: String
     },

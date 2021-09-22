@@ -2,6 +2,7 @@ const {response} = require('express')
 
 const Task = require('../models/Task')
 const {reorganizeByUser} = require('../helpers/reorganize')
+const {getNewIndexFromUserAndDate} = require('../helpers/indexes')
 
 const getTasks = async (req, res = response) => {
   const {uid, premium, query} = req
@@ -37,6 +38,9 @@ const createTask = async (req, res = response) => {
   try {
     const task = new Task(req.body)
     task.user = uid
+
+    // Get the last Task index and add it
+    task.index = await getNewIndexFromUserAndDate(uid, req.body.day)
 
     const savedTask = await task.save()
 
