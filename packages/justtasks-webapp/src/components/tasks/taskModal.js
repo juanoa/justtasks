@@ -38,7 +38,6 @@ export const TaskModal = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
-    console.log(notes)
     if (notes.length > 1000) {
       Swal.fire('Notes\' length is too long', 'Max 1000 characters', 'error')
     } else {

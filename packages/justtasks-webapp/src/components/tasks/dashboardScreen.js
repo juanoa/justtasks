@@ -25,7 +25,6 @@ export const DashboardScreen = () => {
   }
 
   const reorder = (list, startIndex, endIndex) => {
-    console.log(list)
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -36,7 +35,6 @@ export const DashboardScreen = () => {
         dispatch(startTaskUpdate(task))
       }
     })
-    console.log(result)
   }
 
   const move = (source, destination, droppableSource, droppableDestination) => {
