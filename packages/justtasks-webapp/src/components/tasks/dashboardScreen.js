@@ -38,7 +38,33 @@ export const DashboardScreen = () => {
   }
 
   const move = (source, destination, droppableSource, droppableDestination) => {
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
 
+    destClone.splice(droppableDestination.index, 0, removed);
+
+    sourceClone.forEach((task, i) => {
+      if (task.index !== i) {
+        task.index = i
+        dispatch(startTaskUpdate(task))
+      }
+    })
+
+    destClone.forEach((task, i) => {
+      let updated = false
+      if (task.index !== i) {
+        task.index = i
+        updated = true
+      }
+      if (task.day !== droppableDestination.droppableId) {
+        task.day = droppableDestination.droppableId
+        updated = true
+      }
+      if (updated) {
+        dispatch(startTaskUpdate(task))
+      }
+    })
   }
 
   const onDragEnd = (e) => {
