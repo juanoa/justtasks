@@ -22,7 +22,7 @@ export const DayColumn = ({day, tasks, isToday = false}) => {
             {...provided.droppableProps}
           >
             {
-              tasks.map((task, i) => <TaskCard task={task} key={i}/>)
+              tasks.map(task => <TaskCard task={task} key={task._id} />)
             }
           </div>
         )}
