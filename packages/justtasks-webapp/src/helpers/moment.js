@@ -20,7 +20,6 @@ export const isDateToday = (date) => {
 }
 
 export const getForwardDays = (days) => {
-  console.log(days)
   return [
     days[1],
     days[2],
@@ -30,7 +29,6 @@ export const getForwardDays = (days) => {
 }
 
 export const getBackwardDays = (days) => {
-  console.log(days)
   return [
     moment(days[0]).subtract(1, 'days'),
     days[0],

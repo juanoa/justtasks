@@ -9,7 +9,7 @@ import {Droppable} from "react-beautiful-dnd";
 export const DayColumn = ({day, tasks, isToday = false}) => {
 
   return (
-    <div className="col-md-3">
+    <div className="col-md-2">
       <div className={`text-center ${(isToday) ? 'text-danger' : ''} d-flex justify-content-between`}>
         <span className="h4">{moment(day).format('ddd')}</span>
         <span>{moment(day).format('Do MMM')}</span>
