@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import {useDispatch, useSelector} from "react-redux";
 
 import './style.css'
-import {startTaskUpdate, taskClearActive} from "../../actions/tasks";
+import {startTaskUpdate, taskClearActive, taskStartDelete} from "../../actions/tasks";
 import Swal from "sweetalert2";
 
 const customStyles = {
@@ -56,6 +56,12 @@ export const TaskModal = () => {
     setNotes(target.value)
   }
 
+  const handleDeleteTask = (e) => {
+    e.preventDefault()
+    dispatch(taskStartDelete(activeTask._id))
+    dispatch(taskClearActive())
+  }
+
   return (
     <Modal
       isOpen={!!activeTask}
@@ -97,23 +103,34 @@ export const TaskModal = () => {
           <small className="form-text text-muted">Max 1000 characters</small>
         </div>
 
-        <div className="mt-3">
-          <button
-            type="submit"
-            className="btn btn-danger"
-          >
-            <i className="bi bi-save"/>
-            <span> Save</span>
-          </button>
+        <div className="mt-3 d-flex justify-content-between">
+          <div>
+            <button
+              type="submit"
+              className="btn btn-danger"
+            >
+              <i className="bi bi-save"/>
+              <span> Save</span>
+            </button>
 
-          <button
-            type="submit"
-            className="btn btn-outline-danger"
-            style={{marginLeft: 10}}
-            onClick={closeModal}
-          >
-            <span> Close</span>
-          </button>
+            <button
+              className="btn btn-outline-danger"
+              style={{marginLeft: 10}}
+              onClick={closeModal}
+            >
+              <span> Close</span>
+            </button>
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="btn btn-secondary"
+              onClick={handleDeleteTask}
+            >
+              <i className="bi bi-trash"/>
+              <span> Delete</span>
+            </button>
+          </div>
         </div>
 
       </form>
