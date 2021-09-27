@@ -7,6 +7,7 @@ import './style.css'
 import {useForm} from "../../hooks/useForm";
 import {startRegister} from "../../actions/auth";
 import {Seo} from "../seo";
+import Icon from "../../img/just-tasks-icon.png";
 
 export const RegisterScreen = () => {
 
@@ -35,50 +36,64 @@ export const RegisterScreen = () => {
 
   return (
     <>
-      <Seo title="Register | JustTasks" />
-      <div className="auth-form rounded shadow">
-        <h2 className="text-center mb-3">Register</h2>
-        <form onSubmit={handleRegister}>
-          <div className="form-group">
-            <label>Email</label>
+      <Seo title="Sign up | JustTasks" />
+      <div className="form-background">
+        <form className="form-signin" onSubmit={handleRegister}>
+          <div className="text-center mb-4">
+            <img className="mb-4" src={Icon} alt="Icon"
+                 width="72" height="72" />
+            <h1 className="h3 mb-3 font-weight-normal">Sign up</h1>
+          </div>
+
+          <div className="form-label-group">
             <input
-              type="email"
               name="email"
-              className="form-control"
               autoComplete="off"
               value={email}
               onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Name</label>
-            <input
-              type="name"
-              name="name"
+              type="email"
+              id="inputEmail"
               className="form-control"
+              placeholder="Email"
+              required
+              autoFocus
+            />
+            <label htmlFor="inputEmail">Email</label>
+          </div>
+
+          <div className="form-label-group">
+            <input
+              name="name"
               autoComplete="off"
               value={name}
               onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
+              type="text"
+              id="inputName"
               className="form-control"
+              placeholder="Name"
+              required
+            />
+            <label htmlFor="inputName">Name</label>
+          </div>
+
+          <div className="form-label-group">
+            <input
+              name="password"
               autoComplete="off"
               value={password}
               onChange={handleInputChange}
-            />
+              type="password"
+              id="inputPassword"
+              className="form-control"
+              placeholder="Password"
+              required />
+            <label htmlFor="inputPassword">Password</label>
           </div>
-          <div className="form-group text-center mt-4">
-            <button type="submit" className="btn btn-danger btn-block">Register</button>
-          </div>
+          <button className="btn btn btn-danger btn-block mt-3" type="submit">Sign up</button>
+          <p className="text-center mt-3">
+            <Link to="/login" className="form-link">Log in →</Link>
+          </p>
         </form>
-        <p className="text-center mt-3">
-          <Link to="/login">Already have an account? Login</Link>
-        </p>
       </div>
     </>
   )
