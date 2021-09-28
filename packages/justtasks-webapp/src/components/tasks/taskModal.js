@@ -124,7 +124,7 @@ export const TaskModal = () => {
           <div>
             <button
               type="submit"
-              className="btn btn-secondary"
+              className="btn"
               onClick={handleDeleteTask}
             >
               <i className="bi bi-trash"/>
