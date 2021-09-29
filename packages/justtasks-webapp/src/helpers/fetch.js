@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const baseUrl = process.env.REACT_APP_API_URL
 
 export const fetchWithoutToken = (endpoint, data, method='GET') => {
@@ -26,7 +28,7 @@ export const fetchWithToken = (endpoint, data, method='GET') => {
       method,
       headers: {
         'x-token': token,
-        'client-datetime': (new Date()).toUTCString()
+        'client-datetime': moment().format()
       }
     })
   } else {
@@ -35,7 +37,7 @@ export const fetchWithToken = (endpoint, data, method='GET') => {
       headers: {
         'Content-type': 'application/json',
         'x-token': token,
-        'client-datetime': (new Date()).toUTCString()
+        'client-datetime': moment().format()
       },
       body: JSON.stringify(data)
     })
