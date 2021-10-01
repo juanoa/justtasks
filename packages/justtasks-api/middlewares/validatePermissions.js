@@ -1,5 +1,6 @@
 const {response} = require('express')
 const jwt = require('jsonwebtoken')
+const moment = require('moment')
 
 const User = require('../models/User')
 const Task = require('../models/Task')
@@ -49,10 +50,17 @@ const validateNumberOfTasks = async (req, res = response, next) => {
     const {uid} = jwt.verify(token, process.env.SECRET_JWT_SEED)
     const user = await User.findById(uid)
     if (!user.premium) {
-      const day = req.body.day
+      const {day, _id} = req.body
       const tasks = await Task.find({user: uid, day})
-      console.log(tasks.length)
-      if (tasks.length >= process.env.MAX_TASKS_FREE_TIER) {
+      let reorder = false
+      if (_id) {
+        const task = await Task.findById(_id)
+        if (task.day === day) {
+          reorder = true
+        }
+      }
+
+      if (tasks.length >= process.env.MAX_TASKS_FREE_TIER && !reorder) {
         return res.status(401).json({
           ok: false,
           msg: `Upgrade to premium tier to add more than ${process.env.MAX_TASKS_FREE_TIER} tasks in a day.`
