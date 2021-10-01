@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {DragDropContext, Droppable} from "react-beautiful-dnd";
+import Swal from "sweetalert2";
 
 import {DayColumn} from "./dayColumn";
 import {getBackwardDays, getFormattedDayFromDate, getForwardDays, getNextDays, isDateToday} from "../../helpers/moment";
@@ -13,6 +14,7 @@ export const DashboardScreen = () => {
   const dispatch = useDispatch()
 
   const {tasks: allTasks} = useSelector(state => state.tasks)
+  const {premium} = useSelector(state => state.auth)
 
   const initDaysState = getNextDays(4)
   const [days, setDays] = useState(initDaysState);
@@ -38,6 +40,9 @@ export const DashboardScreen = () => {
   }
 
   const move = (source, destination, droppableSource, droppableDestination) => {
+    if (destination.length >= process.env.REACT_APP_MAX_TASKS_FREE_TIER && !premium) {
+      return Swal.fire('Error', `Upgrade to premium tier to add more than ${process.env.REACT_APP_MAX_TASKS_FREE_TIER} tasks in a day.`, 'error')
+    }
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -89,14 +94,6 @@ export const DashboardScreen = () => {
         destination
       )
     }
-    // const taskId = e.draggableId
-    // const dayDest = e.destination?.droppableId
-    // const indexDest = e.destination?.index
-    // if (dayDest === 'delete') {
-    //   dispatch(taskStartDelete(taskId))
-    // } else if (dayDest) {
-    //   dispatch(taskStartUpdateDayFromDrag(taskId, dayDest))
-    // }
   }
 
   const handleBackward = () => {
