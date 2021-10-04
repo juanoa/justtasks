@@ -22,7 +22,7 @@ export const AppRouter = () => {
 
   useEffect(() => {
     dispatch(startChecking())
-  }, [dispatch()]);
+  }, [dispatch]);
 
   if (loading) {
     return <Loading />

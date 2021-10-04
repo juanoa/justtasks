@@ -17,7 +17,7 @@ export const DashboardRouter = () => {
 
   useEffect(() => {
     dispatch(taskStartLoading())
-  }, [dispatch()]);
+  }, [dispatch]);
 
   return (
     <>
