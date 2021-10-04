@@ -17,13 +17,14 @@ import {Loading} from "../components/ui/loading";
 export const AppRouter = () => {
 
   const dispatch = useDispatch()
-  const {checking, uid} = useSelector(state => state.auth)
+  const {uid} = useSelector(state => state.auth)
+  const {loading} = useSelector(state => state.ui)
 
   useEffect(() => {
     dispatch(startChecking())
-  }, [dispatch]);
+  }, []);
 
-  if (checking) {
+  if (loading) {
     return <Loading />
   }
 

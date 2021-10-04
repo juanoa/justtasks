@@ -3,9 +3,11 @@ import Swal from 'sweetalert2'
 import {types} from "../types/types";
 import {fetchWithToken, fetchWithoutToken} from "../helpers/fetch";
 import {taskLogout} from "./tasks";
+import {finishLoading, startLoading} from "./ui";
 
 export const startLogin = (email, password) => {
   return async (dispatch) => {
+    dispatch(startLoading())
     const res = await fetchWithoutToken('auth', {email, password}, 'POST')
     const body = await res.json()
 
@@ -21,11 +23,13 @@ export const startLogin = (email, password) => {
     } else {
       Swal.fire('Error', 'Email or password are wrong', 'error')
     }
+    dispatch(finishLoading())
   }
 }
 
 export const startRegister = (email, password, name) => {
   return async (dispatch) => {
+    dispatch(startLoading())
     const res = await fetchWithoutToken('auth/new', {name, email, password}, 'POST')
     const body = await res.json()
 
@@ -41,6 +45,7 @@ export const startRegister = (email, password, name) => {
     } else {
       Swal.fire('Error', body.msg, 'error')
     }
+    dispatch(finishLoading())
   }
 }
 
@@ -83,6 +88,7 @@ export const startDeleteUser = () => {
 
 export const startChecking = () => {
   return async (dispatch) => {
+    dispatch(startLoading())
     const res = await fetchWithToken('auth/renew')
     const body = await res.json()
 
@@ -95,9 +101,8 @@ export const startChecking = () => {
         email: body.user.email,
         premium: body.user.premium
       }))
-    } else {
-      dispatch(checkingFinish())
     }
+    dispatch(finishLoading())
   }
 }
 
@@ -106,6 +111,7 @@ export const startLogout = () => {
     localStorage.clear()
     dispatch(logout())
     dispatch(taskLogout())
+    dispatch(finishLoading())
   }
 }
 
@@ -117,10 +123,6 @@ const login = (user) => ({
 const updateUser = (user) => ({
   type: types.authUpdateUser,
   payload: user
-})
-
-const checkingFinish = () => ({
-  type: types.authCheckingFinish
 })
 
 const logout = () => ({

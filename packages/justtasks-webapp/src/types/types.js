@@ -13,4 +13,7 @@ export const types = {
   authStartTokenRenew: '[Auth] Start Token renew',
   authLogout: '[Auth] Logout',
   authUpdateUser: '[Auth] Update user',
+
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading',
 }

@@ -5,7 +5,6 @@ import {fetchWithToken} from "../helpers/fetch";
 
 export const taskStartLoading = () => {
   return async (dispatch) => {
-
     try {
       const resp = await fetchWithToken('tasks');
       const body = await resp.json()
@@ -53,29 +52,6 @@ const taskAddNew = (task) => ({
   type: types.taskAddNew,
   payload: task
 })
-
-export const taskStartUpdateDayFromDrag = (id, day) => {
-  return async (dispatch, getState) => {
-    const {tasks} = getState().tasks
-    const task = tasks.find(t => t._id === id)
-    const oldDay = task.day
-    task.day = day
-    dispatch(taskUpdate(task))
-
-    try {
-      const resp = await fetchWithToken(`tasks/${id}`, task, 'PUT')
-      const body = await resp.json()
-
-      if (!body.ok) {
-        task.day = oldDay
-        dispatch(taskUpdate(task))
-        Swal.fire('Error', body.msg, 'error')
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  }
-}
 
 export const startTaskUpdate = (task) => {
   return async (dispatch, getState) => {
