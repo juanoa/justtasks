@@ -17,6 +17,7 @@ export const TasksReducer = (state = initialState, action) => {
       }
 
     case types.taskUpdate:
+    case types.taskUndoUpdate:
       return {
         ...state,
         tasks: state.tasks.map(

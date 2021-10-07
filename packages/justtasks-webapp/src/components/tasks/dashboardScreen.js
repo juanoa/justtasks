@@ -27,9 +27,9 @@ export const DashboardScreen = () => {
   }
 
   const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+    const result = JSON.parse(JSON.stringify(list))
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
 
     result.forEach((task, i) => {
       if (task.index !== i) {
@@ -43,11 +43,11 @@ export const DashboardScreen = () => {
     if (destination.length >= process.env.REACT_APP_MAX_TASKS_FREE_TIER && !premium) {
       return Swal.fire('Error', `Upgrade to premium tier to add more than ${process.env.REACT_APP_MAX_TASKS_FREE_TIER} tasks in a day.`, 'error')
     }
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
+    const sourceClone = JSON.parse(JSON.stringify(source))
+    const destClone = JSON.parse(JSON.stringify(destination))
+    const [removed] = sourceClone.splice(droppableSource.index, 1)
 
-    destClone.splice(droppableDestination.index, 0, removed);
+    destClone.splice(droppableDestination.index, 0, removed)
 
     sourceClone.forEach((task, i) => {
       if (task.index !== i) {

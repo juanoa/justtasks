@@ -57,7 +57,6 @@ export const startTaskUpdate = (task) => {
   return async (dispatch, getState) => {
     const {tasks} = getState().tasks
     const oldTask = tasks.find(t => t._id === task._id)
-
     dispatch(taskUpdate(task))
     try {
       const resp = await fetchWithToken(`tasks/${task._id}`, task, 'PUT')
@@ -65,7 +64,7 @@ export const startTaskUpdate = (task) => {
 
 
       if (!body.ok) {
-        dispatch(taskUpdate(oldTask))
+        dispatch(taskUndoUpdate(oldTask))
         Swal.fire('Error', body.msg, 'error')
       }
     } catch (e) {
@@ -76,6 +75,11 @@ export const startTaskUpdate = (task) => {
 
 const taskUpdate = (task) => ({
   type: types.taskUpdate,
+  payload: task
+})
+
+const taskUndoUpdate = (task) => ({
+  type: types.taskUndoUpdate,
   payload: task
 })
 

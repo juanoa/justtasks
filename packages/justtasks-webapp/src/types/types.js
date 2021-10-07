@@ -2,6 +2,7 @@ export const types = {
 
   taskAddNew: '[Task] Add new task',
   taskUpdate: '[Task] Update task',
+  taskUndoUpdate: '[Task] Undo update task',
   taskDelete: '[Task] Delete task',
   taskLogout: '[Task] Logout task',
   taskLoaded: '[Task] Tasks loaded',
