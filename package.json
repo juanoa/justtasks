@@ -1,10 +1,11 @@
 {
   "name": "justtasks",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "lerna": "^4.0.0"
   },
   "scripts": {
-    "start": "lerna run start --stream"
+    "start": "npx lerna run start --stream"
   }
 }
