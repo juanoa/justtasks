@@ -2,10 +2,11 @@ version: '3.6'
 services:
   mongodb:
     image: mongo:4.2.3-bionic
-    container_name: mongodb-justtasks
+    container_name: mongodb
     ports:
       - 27017:27017
     volumes:
+      - ./docker/mongo-entrypoint:/docker-entrypoint-initdb.d
       - mongodb:/data/db
       - mongoconfig:/data/configdb
 
