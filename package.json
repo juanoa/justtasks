@@ -1,7 +1,10 @@
 {
-  "name": "root",
+  "name": "justtasks",
   "private": true,
   "devDependencies": {
     "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start": "lerna run start"
   }
 }
