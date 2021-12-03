@@ -1,2 +1,0 @@
-- name: Easy detect-secrets
-  uses: RobertFischer/detect-secrets-action@v2.0.0
