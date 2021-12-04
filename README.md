@@ -70,7 +70,7 @@ You can use one of this mail/password:
 
 |  | EMAIL | PASSWORD |
 |---|---|---|
-| PREMIUM | premium@justtasks.com | 123456 |
-| BASIC | basic@justtasks.com | 1234566 |
+| PREMIUM | premium@justtasks.app | 123456 |
+| BASIC | basic@justtasks.app | 1234566 |
 
 You can also register a new account, but you won't be a premium user.
