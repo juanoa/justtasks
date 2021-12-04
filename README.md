@@ -19,3 +19,17 @@ To start API, web application and web:
 ```
 npm run start
 ```
+
+### Hosts
+API
+```
+localhost:3031/v1
+```
+App
+```
+localhost:3000
+```
+Web
+```
+localhost:8000
+```
