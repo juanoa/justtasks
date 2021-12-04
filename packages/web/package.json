@@ -1,12 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "private": true,
-  "description": "justtasks-web",
-  "author": "Juan Otálora Alarcón",
-  "keywords": [
-    "gatsby"
-  ],
+  "description": "JustTasks Web",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
