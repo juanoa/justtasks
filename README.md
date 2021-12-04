@@ -33,3 +33,11 @@ Web
 ```
 localhost:8000
 ```
+
+### Dev Auth
+* Premium User:
+  * premium@justtasks.com
+  * 123456
+* Basic User:
+  * basic@justtasks.com
+  * 123456
