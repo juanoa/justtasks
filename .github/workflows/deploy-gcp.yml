@@ -1,44 +1,44 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Deploy to GAE
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  deploy:
-    name: Deploying to Google Cloud
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set enviroment variables
-        uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
-        env:
-          DB_URL: ${{ secrets.DB_URL }}
-          MAX_TASKS_FREE_TIER: ${{ secrets.MAX_TASKS_FREE_TIER }}
-          PORT: ${{ secrets.API_PORT }}
-          SECRET_JWT_SEED: ${{ secrets.SECRET_JWT_SEED }}
-          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
-
-      - name: Deploy to App Engine
-        id: deploy
-        uses: google-github-actions/deploy-appengine@v0.2.0
-        with:
-          working_directory: packages/api
-          project_id: ${{ secrets.GCP_PROJECT }}
-          credentials: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: Test
-        run: curl "${{ steps.deploy.outputs.url }}"
+## This is a basic workflow to help you get started with Actions
+#
+#name: Deploy to GAE
+#
+## Controls when the workflow will run
+#on:
+#  # Triggers the workflow on push or pull request events but only for the main branch
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
+#
+#  # Allows you to run this workflow manually from the Actions tab
+#  workflow_dispatch:
+#
+## A workflow run is made up of one or more jobs that can run sequentially or in parallel
+#jobs:
+#  deploy:
+#    name: Deploying to Google Cloud
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#
+#      - name: Set enviroment variables
+#        uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
+#        env:
+#          DB_URL: ${{ secrets.DB_URL }}
+#          MAX_TASKS_FREE_TIER: ${{ secrets.MAX_TASKS_FREE_TIER }}
+#          PORT: ${{ secrets.API_PORT }}
+#          SECRET_JWT_SEED: ${{ secrets.SECRET_JWT_SEED }}
+#          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+#
+#      - name: Deploy to App Engine
+#        id: deploy
+#        uses: google-github-actions/deploy-appengine@v0.2.0
+#        with:
+#          working_directory: packages/api
+#          project_id: ${{ secrets.GCP_PROJECT }}
+#          credentials: ${{ secrets.GCP_CREDENTIALS }}
+#
+#      - name: Test
+#        run: curl "${{ steps.deploy.outputs.url }}"
