@@ -1,0 +1,6 @@
+api:
+  - package/api/*
+web:
+  -package/web/*
+app:
+  -package/app/*
