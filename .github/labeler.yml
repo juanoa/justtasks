@@ -1,3 +1,6 @@
+repo:
+  - '*'
+
 api:
   - package/api/*
   - package/api/**
