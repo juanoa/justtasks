@@ -31,6 +31,8 @@ jobs:
           PORT: ${{ secrets.API_PORT }}
           SECRET_JWT_SEED: ${{ secrets.SECRET_JWT_SEED }}
           STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+        with:
+          appyamlpath: 'packages/api/app.yaml'
 
       - name: Deploy to App Engine
         id: deploy
