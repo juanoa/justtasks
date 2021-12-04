@@ -8,6 +8,6 @@
   JustTasks informational web
 </p>
 
-## Tech stack ⚙️
+## Tech stack 🛠
 
 * Gatsby

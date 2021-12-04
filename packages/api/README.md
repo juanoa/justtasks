@@ -8,7 +8,7 @@
   This REST API back the JustTasks webapp
 </p>
 
-## Tech stack ⚙️
+## Tech stack 🛠
 
 * Node.JS
 * Express

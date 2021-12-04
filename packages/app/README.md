@@ -8,7 +8,7 @@
   Task manager webapp
 </p>
 
-## Tech stack ⚙️
+## Tech stack 🛠
 
 * React
 * Redux
