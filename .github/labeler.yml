@@ -1,9 +1,9 @@
 api:
-  - package/api/*
-  - package/api/**/*
+  - packages/api/*
+  - packages/api/**/*
 web:
-  - package/web/*
-  - package/web/**/*
+  - packages/web/*
+  - packages/web/**/*
 app:
-  - package/app/*
-  - package/app/**/*
+  - packages/app/*
+  - packages/app/**/*
