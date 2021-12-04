@@ -14,6 +14,6 @@ docker:
   - docker-compose.yml
   - docker/*
   - docker/**/*
-dependecies_updated:
+package_updated:
   - package.json
   - packages/**/package.json
