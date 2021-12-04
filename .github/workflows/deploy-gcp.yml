@@ -23,6 +23,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set enviroment variables
+        uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          MAX_TASKS_FREE_TIER: ${{ secrets.MAX_TASKS_FREE_TIER }}
+          PORT: ${{ secrets.API_PORT }}
+          SECRET_JWT_SEED: ${{ secrets.SECRET_JWT_SEED }}
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+
       - name: Deploy to App Engine
         id: deploy
         uses: google-github-actions/deploy-appengine@v0.2.0
