@@ -104,7 +104,7 @@ const Footer = () => {
                   to="/"
                   className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
-                  API <small>(Soon)</small>
+                  API <small>(Coming soon)</small>
                 </Link>
               </li>
               <li>

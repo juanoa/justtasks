@@ -1,0 +1,19 @@
+api:
+  - packages/api/*
+  - packages/api/**/*
+web:
+  - packages/web/*
+  - packages/web/**/*
+app:
+  - packages/app/*
+  - packages/app/**/*
+github:
+  - .github/*
+  - .github/**/*
+docker:
+  - docker-compose.yml
+  - docker/*
+  - docker/**/*
+package_updated:
+  - package.json
+  - packages/**/package.json

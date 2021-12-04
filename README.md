@@ -19,3 +19,25 @@ To start API, web application and web:
 ```
 npm run start
 ```
+
+### Hosts
+API
+```
+localhost:3031/v1
+```
+App
+```
+localhost:3000
+```
+Web
+```
+localhost:8000
+```
+
+### Dev Auth
+* Premium User:
+  * premium@justtasks.com
+  * 123456
+* Basic User:
+  * basic@justtasks.com
+  * 123456

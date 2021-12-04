@@ -30,7 +30,7 @@ export const HeroSection = () => {
               href="https://dashboard.justtasks.app/login"
               className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-4 md:text-lg md:px-10"
             >
-              Login
+              Log in
             </a>
           </div>
         </div>
