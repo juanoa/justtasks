@@ -7,3 +7,13 @@ web:
 app:
   - packages/app/*
   - packages/app/**/*
+github:
+  - .github/*
+  - .github/**/*
+docker:
+  - docker-compose.yml
+  - docker/*
+  - docker/**/*
+dependecies_updated:
+  - package.json
+  - packages/**/package.json
