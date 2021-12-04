@@ -1,12 +1,9 @@
-repo:
-  - '*'
-
 api:
   - package/api/*
-  - package/api/**
+  - package/api/**/*
 web:
   -package/web/*
-  -package/web/**
+  -package/web/**/*
 app:
   -package/app/*
-  -package/app/**
+  -package/app/**/*
